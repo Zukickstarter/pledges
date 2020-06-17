@@ -1,8 +1,4 @@
 # pledges
-Pledges component
-
-
-# Air Tree n Tree Recommendation Service
 
 ## API Spec
 
