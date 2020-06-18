@@ -66,9 +66,18 @@ const initializeDatabase = async () => {
   });
 };
 
-const addListing = async () => {
-  console.log
+const addListing = async (productName) => {
+  return Listing.create({listingTitle: productName})
+  .catch((err) => {
+    console.log('error in db.addListing: ', err);
+    return err;
+  });
 };
+
+const addFourPledges = (arrayOfPledges) => {
+
+};
+
 
 sequelize.authenticate()
 .then(() => {
@@ -80,4 +89,4 @@ sequelize.authenticate()
 
 
 
-module.exports = { initializeDatabase, addListing };
+module.exports = { initializeDatabase, addListing, addFourPledges };
