@@ -37,7 +37,7 @@ const createRandomListingProduct = () => {
 };
 
 /**
- * define fourn pledge prices and associate them with pledgeTitles by index
+ * define four pledge prices and associate them with pledgeTitles by index
  */
 let prices = ['$1', '$10', '$100', '$1000'];
 let pledgeTitles = ['Starter Pledge', 'Average Pledge', 'Big Pledge', 'Massive Pledge!'];
