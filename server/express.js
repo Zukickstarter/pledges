@@ -8,12 +8,14 @@ const port = 3003;
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
+
+/**
+ * endpoint that takes a id (of a listing in kickstarter) and returns the data associated with that id
+ */
 app.get('/api/pledges/:id', (req, res) => {
-  console.log('req.params: ', req.params);
   let { id } = req.params;
   return getPledges(id)
   .then((response) => {
-    console.log('response: ', response);
     if (response.length < 1) {
       res.status(404).send('id not found in database');
     } else {

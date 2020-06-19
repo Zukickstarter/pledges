@@ -6,6 +6,7 @@ const sequelize = new Sequelize('pledgesDb', 'root', dbPassword, {
   dialect: 'mysql'
 });
 
+// ========================= table schemas ========================
 /**
  * defines schema for "listings" table in pledgesDb
  */
@@ -24,7 +25,7 @@ const Listing = sequelize.define('listing', {
 });
 
 /**
- * defines schema for "pledgeOptions" table in pledgeDb
+ * defines schema for "pledgeOptions" table in pledgesDb
  */
 const PledgeOption = sequelize.define('pledgeOption', {
   id: {
@@ -57,9 +58,10 @@ const PledgeOption = sequelize.define('pledgeOption', {
   }
 });
 
-
 PledgeOption.belongsTo(Listing);
 
+
+// ========================== init db =================================
 /**
  * initializes database with tables "listings" and "pledgeOptions"
  */
@@ -76,7 +78,12 @@ const initializeDatabase = async () => {
   });
 };
 
-
+// ======================= queries ===========================
+/**
+ * executes a sequelize findAll() on pledgeOptions table where listingId = id
+ * returns a promise
+ * @param {id} id
+ */
 const getPledgesByListingId = async (id) => {
   return PledgeOption.findAll({
     where: {
@@ -89,6 +96,7 @@ const getPledgesByListingId = async (id) => {
   });
 };
 
+// ===================== seed functions ======================
 /**
  * adds a single listing to the listings table in pledgesDb
  * @param {productName} productName
@@ -114,6 +122,7 @@ const addFourPledges = (arrayOfPledges) => {
 };
 
 
+// ======================== auth =============================
 sequelize.authenticate()
 .then(() => {
   console.log('connected to the db');
@@ -123,7 +132,7 @@ sequelize.authenticate()
 });
 
 
-
+// ======================== exports ==========================
 module.exports = {
   initializeDatabase,
   addListing,
