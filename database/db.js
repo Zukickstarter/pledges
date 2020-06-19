@@ -77,6 +77,18 @@ const initializeDatabase = async () => {
 };
 
 
+const getPledgesByListingId = async (id) => {
+  return PledgeOption.findAll({
+    where: {
+      listingId: id
+    }
+  })
+  .catch((err) => {
+    console.log(`there was an error getting the pledges with id ${id}: `, err);
+    return err;
+  });
+};
+
 /**
  * adds a single listing to the listings table in pledgesDb
  * @param {productName} productName
@@ -112,4 +124,9 @@ sequelize.authenticate()
 
 
 
-module.exports = { initializeDatabase, addListing, addFourPledges };
+module.exports = {
+  initializeDatabase,
+  addListing,
+  addFourPledges,
+  getPledgesByListingId
+};
