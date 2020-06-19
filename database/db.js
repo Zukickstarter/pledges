@@ -1,10 +1,14 @@
 const { Sequelize, DataTypes } = require('sequelize');
+const { dbPassword } = require('../dbAuth.js');
 
-const sequelize = new Sequelize('pledgesDb', 'root', 'gimmie', {
+const sequelize = new Sequelize('pledgesDb', 'root', dbPassword, {
   host: 'localhost',
   dialect: 'mysql'
 });
 
+/**
+ * defines schema for "listings" table in pledgesDb
+ */
 const Listing = sequelize.define('listing', {
   id: {
     type: DataTypes.INTEGER,
@@ -19,6 +23,9 @@ const Listing = sequelize.define('listing', {
   timestamps: false
 });
 
+/**
+ * defines schema for "pledgeOptions" table in pledgeDb
+ */
 const PledgeOption = sequelize.define('pledgeOption', {
   id: {
     type: DataTypes.INTEGER,
@@ -26,7 +33,7 @@ const PledgeOption = sequelize.define('pledgeOption', {
     autoIncrement: true
   },
   price: {
-    type: DataTypes.INTEGER
+    type: DataTypes.STRING
   },
   pledgeTitle: {
     type: DataTypes.STRING
@@ -50,9 +57,12 @@ const PledgeOption = sequelize.define('pledgeOption', {
   }
 });
 
-// // not yet known if needed:
+
 PledgeOption.belongsTo(Listing);
 
+/**
+ * initializes database with tables "listings" and "pledgeOptions"
+ */
 const initializeDatabase = async () => {
   Listing.sync({ force: true })
   .catch((err) => {
@@ -66,9 +76,31 @@ const initializeDatabase = async () => {
   });
 };
 
-const addListing = async () => {
-  console.log
+
+/**
+ * adds a single listing to the listings table in pledgesDb
+ * @param {productName} productName
+ */
+const addListing = async (productName) => {
+  return Listing.create({listingTitle: productName})
+  .catch((err) => {
+    console.log('error in db.addListing: ', err);
+    return err;
+  });
 };
+
+/**
+ * adds four rows to the "pledgeOptions" table in pledgesDb
+ * @param {arrayOfPledges} arrayOfPledges
+ */
+const addFourPledges = (arrayOfPledges) => {
+  return PledgeOption.bulkCreate(arrayOfPledges)
+  .catch((err) => {
+    console.log('error inside of db.addFourPledges: ', err);
+    return err;
+  });
+};
+
 
 sequelize.authenticate()
 .then(() => {
@@ -80,4 +112,4 @@ sequelize.authenticate()
 
 
 
-module.exports = { initializeDatabase, addListing };
+module.exports = { initializeDatabase, addListing, addFourPledges };
