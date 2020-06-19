@@ -26,7 +26,7 @@ const PledgeOption = sequelize.define('pledgeOption', {
     autoIncrement: true
   },
   price: {
-    type: DataTypes.INTEGER
+    type: DataTypes.STRING
   },
   pledgeTitle: {
     type: DataTypes.STRING
@@ -75,7 +75,11 @@ const addListing = async (productName) => {
 };
 
 const addFourPledges = (arrayOfPledges) => {
-
+  return PledgeOption.bulkCreate(arrayOfPledges)
+  .catch((err) => {
+    console.log('error inside of db.addFourPledges: ', err);
+    return err;
+  });
 };
 
 

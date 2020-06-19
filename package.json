@@ -4,6 +4,7 @@
   "description": "Pledges Component for Zukickstarter",
   "main": "index.js",
   "scripts": {
+    "seedDatabase": "node ./database/seed.js",
     "lint": "eslint",
     "test": "jest --coverage --verbose --colors ./__tests__",
     "start": "nodemon server/express.js --watch"
