@@ -23,6 +23,9 @@ const Listing = sequelize.define('listing', {
   timestamps: false
 });
 
+/**
+ * defines schema for "pledgeOptions" table in pledgeDb
+ */
 const PledgeOption = sequelize.define('pledgeOption', {
   id: {
     type: DataTypes.INTEGER,
@@ -54,9 +57,12 @@ const PledgeOption = sequelize.define('pledgeOption', {
   }
 });
 
-// // not yet known if needed:
+
 PledgeOption.belongsTo(Listing);
 
+/**
+ * initializes database with tables "listings" and "pledgeOptions"
+ */
 const initializeDatabase = async () => {
   Listing.sync({ force: true })
   .catch((err) => {
@@ -70,6 +76,11 @@ const initializeDatabase = async () => {
   });
 };
 
+
+/**
+ * adds a single listing to the listings table in pledgesDb
+ * @param {productName} productName
+ */
 const addListing = async (productName) => {
   return Listing.create({listingTitle: productName})
   .catch((err) => {
@@ -78,6 +89,10 @@ const addListing = async (productName) => {
   });
 };
 
+/**
+ * adds four rows to the "pledgeOptions" table in pledgesDb
+ * @param {arrayOfPledges} arrayOfPledges
+ */
 const addFourPledges = (arrayOfPledges) => {
   return PledgeOption.bulkCreate(arrayOfPledges)
   .catch((err) => {
