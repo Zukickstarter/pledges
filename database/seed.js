@@ -3,17 +3,23 @@ const { addListing, addFourPledges } = require('./db.js');
 
 // ===================== helpers ======================
 
-// create randomNumber of any size
+/**
+ * create randomNumber of any size
+ */
 const randomNumber = () => {
   return faker.random.number();
 };
 
-// create fake product
+/**
+ * create fake product
+ */
 const randomProduct = () => {
   return faker.commerce.product();
 };
 
-// create random future date in "[month] [year]" format
+/**
+ * create random future date in "[month] [year]" format
+ */
 const randomFutureDate = () => {
   let result = '';
   result += faker.date.month();
@@ -23,16 +29,23 @@ const randomFutureDate = () => {
   return result;
 };
 
-// create fake listing product
+/**
+ * create fake listing product
+ */
 const createRandomListingProduct = () => {
   return faker.commerce.productName();
 };
 
-// define fourn pledge prices and associate them with pledgeTitles by index
+/**
+ * define fourn pledge prices and associate them with pledgeTitles by index
+ */
 let prices = ['$1', '$10', '$100', '$1000'];
 let pledgeTitles = ['Starter Pledge', 'Average Pledge', 'Big Pledge', 'Massive Pledge!'];
 
-// create four pledges associated with each listing
+/**
+ * create four pledges associated with each listing
+ * @param {dataValues} dataValues
+ */
 const createFourPledges = (dataValues) => {
   let listingId = dataValues.id;
   let listingTitle = dataValues.listingTitle
@@ -55,9 +68,13 @@ const createFourPledges = (dataValues) => {
 // let fourPledges = createFourPledges({id: 3, listingTitle: 'testTitle'});
 // console.log('fourPledges: ', fourPledges);
 
+
 // =================== seed function ============================
 
 
+/**
+ * adds 1 listing and four associated pledges to the db
+ */
 const seedListingAndPledges = () => {
   // generate product
   let listingProduct = createRandomListingProduct();
@@ -83,6 +100,9 @@ const seedListingAndPledges = () => {
   })
 };
 
+/**
+ * seeds 100 listings to the db
+ */
 const populate100Listings = () => {
   for (let i = 0; i < 100; i++) {
     seedListingAndPledges();

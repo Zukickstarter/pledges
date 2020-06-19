@@ -1,10 +1,14 @@
 const { Sequelize, DataTypes } = require('sequelize');
+const { dbPassword } = require('../dbAuth.js');
 
-const sequelize = new Sequelize('pledgesDb', 'root', 'gimmie', {
+const sequelize = new Sequelize('pledgesDb', 'root', dbPassword, {
   host: 'localhost',
   dialect: 'mysql'
 });
 
+/**
+ * defines schema for "listings" table in pledgesDb
+ */
 const Listing = sequelize.define('listing', {
   id: {
     type: DataTypes.INTEGER,
