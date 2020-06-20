@@ -96,6 +96,14 @@ const getPledgesByListingId = async (id) => {
   });
 };
 
+
+const getAllListings = async () => {
+  return Listing.findAll({})
+  .catch((err) => {
+    console.log('there was an error getting all listings from the db: ', err);
+  });
+};
+
 // ===================== seed functions ======================
 /**
  * adds a single listing to the listings table in pledgesDb
@@ -137,5 +145,6 @@ module.exports = {
   initializeDatabase,
   addListing,
   addFourPledges,
-  getPledgesByListingId
+  getPledgesByListingId,
+  getAllListings
 };
