@@ -37,14 +37,14 @@ const createRandomListingProduct = () => {
 };
 
 /**
- * define fourn pledge prices and associate them with pledgeTitles by index
+ * define four pledge prices and associate them with pledgeTitles by index
  */
 let prices = ['$1', '$10', '$100', '$1000'];
 let pledgeTitles = ['Starter Pledge', 'Average Pledge', 'Big Pledge', 'Massive Pledge!'];
 
 /**
  * create four pledges associated with each listing
- * @param {dataValues} dataValues
+ * @param {string} dataValues
  */
 const createFourPledges = (dataValues) => {
   let listingId = dataValues.id;
@@ -69,8 +69,7 @@ const createFourPledges = (dataValues) => {
 // console.log('fourPledges: ', fourPledges);
 
 
-// =================== seed function ============================
-
+// =================== seed =====================================
 
 /**
  * adds 1 listing and four associated pledges to the db

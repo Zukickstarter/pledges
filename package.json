@@ -4,8 +4,8 @@
   "description": "Pledges Component for Zukickstarter",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
     "seedDatabase": "node ./database/seed.js",
-    "lint": "eslint",
     "test": "jest --detectOpenHandles ./__tests__",
     "start": "nodemon server/express.js --watch"
   },
@@ -21,9 +21,6 @@
   "homepage": "https://github.com/Zukickstarter/pledges#readme",
   "dependencies": {
     "axios": "^0.19.2",
-    "eslint-config-airbnb": "^18.1.0",
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jsx-a11y": "^6.2.3",
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
     "sequelize": "^5.21.13"
@@ -38,7 +35,11 @@
     "css-loader": "^3.5.3",
     "enzyme": "^3.11.0",
     "eslint": "^7.2.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.0",
     "faker": "^4.1.0",
     "jest": "^26.0.1",
     "jsdoc": "^3.6.4",
