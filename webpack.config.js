@@ -1,28 +1,38 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: path.resolve(__dirname, 'src', 'index.js'),
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx|css)$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', "@babel/preset-react"]
-          }
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react']
+            }
+          },
+        ]
       },
       {
         test: /\.css$/i,
         exclude: /node_modules/,
-        loader: ['style-loader', 'css-loader']
+        use: [
+          'style-loader', 'css-loader'
+        ]
       }
     ]
-  }
-};
+  },
+  resolve: {
+    extensions: [
+      '.jsx', '.js', '.css'
+    ]
+  },
+  mode: 'development'
+}
