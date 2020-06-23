@@ -4,11 +4,11 @@ const { getPledges } = require('./model.js');
 
 const app = express();
 app.use(express.static('dist'));
-console.log('__dirname: ', __dirname);
 app.use(express.json());
 const port = 3003;
 
-app.get('/', (req, res) => res.send('Hello World!'));
+
+// app.get('/', (req, res) => res.send('Hello World!'));
 
 
 /**
