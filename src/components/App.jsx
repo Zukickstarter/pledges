@@ -1,6 +1,12 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
+import PledgeList from './PledgeList.jsx';
 
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -22,12 +28,17 @@ class App extends React.Component {
     });
   };
 
+
+
   render() {
     const { pledges } = this.state;
-    console.log('pledges: ', pledges);
     return (
         <div className="AppComponentDiv">
-          App component div
+          <Title>
+            THIS IS THE TITLE
+          </Title>
+          <PledgeList
+            pledges={pledges}/>
         </div>
     );
   }
