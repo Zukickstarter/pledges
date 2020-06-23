@@ -48,7 +48,7 @@ let pledgeTitles = ['Starter Pledge', 'Average Pledge', 'Big Pledge', 'Massive P
  */
 const createFourPledges = (dataValues) => {
   let listingId = dataValues.id;
-  let listingTitle = dataValues.listingTitle
+  let listingTitle = dataValues.listingTitle;
   let result = [];
   for (let i = 0; i < 4; i++) {
     let pledge = {
@@ -81,22 +81,22 @@ const seedListingAndPledges = () => {
   // add product to listings table
   return addListing(listingProduct)
   // return product's listings table id and listingTitle
-  .then((dbResponse) => {
-    console.log('dbResponse.dataValues: ', dbResponse.dataValues);
-    return dbResponse.dataValues;
-  })
-  .then((dataValues) => {
-    // create four pledges associated with that listing:
-    let fourPledges = createFourPledges(dataValues);
-    // add four pledges to the pledges table
-    return addFourPledges(fourPledges);
-  })
-  .then((dbResponse) => {
-    console.log('success! dbResponse.dataValues: ', dbResponse.dataValues);
-  })
-  .catch((err) => {
-    console.log('error seeding data: ', err);
-  })
+    .then((dbResponse) => {
+      console.log('dbResponse.dataValues: ', dbResponse.dataValues);
+      return dbResponse.dataValues;
+    })
+    .then((dataValues) => {
+      // create four pledges associated with that listing:
+      let fourPledges = createFourPledges(dataValues);
+      // add four pledges to the pledges table
+      return addFourPledges(fourPledges);
+    })
+    .then((dbResponse) => {
+      console.log('success! dbResponse.dataValues: ', dbResponse.dataValues);
+    })
+    .catch((err) => {
+      console.log('error seeding data: ', err);
+    });
 };
 
 /**

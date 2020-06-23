@@ -67,15 +67,15 @@ PledgeOption.belongsTo(Listing);
  */
 const initializeDatabase = async () => {
   Listing.sync({ force: true })
-  .catch((err) => {
-    console.log('error in Listing.sync: ', err);
-  })
-  .then(() => {
-    PledgeOption.sync({ force: true });
-  })
-  .catch((err) => {
-    console.log('error in PledgeOption.sync: ', err);
-  });
+    .catch((err) => {
+      console.log('error in Listing.sync: ', err);
+    })
+    .then(() => {
+      PledgeOption.sync({ force: true });
+    })
+    .catch((err) => {
+      console.log('error in PledgeOption.sync: ', err);
+    });
 };
 
 // ======================= queries ===========================
@@ -90,18 +90,18 @@ const getPledgesByListingId = async (id) => {
       listingId: id
     }
   })
-  .catch((err) => {
-    console.log(`there was an error getting the pledges with id ${id}: `, err);
-    return err;
-  });
+    .catch((err) => {
+      console.log(`there was an error getting the pledges with id ${id}: `, err);
+      return err;
+    });
 };
 
 
 const getAllListings = async () => {
   return Listing.findAll({})
-  .catch((err) => {
-    console.log('there was an error getting all listings from the db: ', err);
-  });
+    .catch((err) => {
+      console.log('there was an error getting all listings from the db: ', err);
+    });
 };
 
 // ===================== seed functions ======================
@@ -111,10 +111,10 @@ const getAllListings = async () => {
  */
 const addListing = async (productName) => {
   return Listing.create({listingTitle: productName})
-  .catch((err) => {
-    console.log('error in db.addListing: ', err);
-    return err;
-  });
+    .catch((err) => {
+      console.log('error in db.addListing: ', err);
+      return err;
+    });
 };
 
 /**
@@ -123,21 +123,21 @@ const addListing = async (productName) => {
  */
 const addFourPledges = (arrayOfPledges) => {
   return PledgeOption.bulkCreate(arrayOfPledges)
-  .catch((err) => {
-    console.log('error inside of db.addFourPledges: ', err);
-    return err;
-  });
+    .catch((err) => {
+      console.log('error inside of db.addFourPledges: ', err);
+      return err;
+    });
 };
 
 
 // ======================== auth =============================
 sequelize.authenticate()
-.then(() => {
-  console.log('connected to the db');
-})
-.catch((err) => {
-  console.log('error connecting to the db: ', err);
-});
+  .then(() => {
+    console.log('connected to the db');
+  })
+  .catch((err) => {
+    console.log('error connecting to the db: ', err);
+  });
 
 
 // ======================== exports ==========================

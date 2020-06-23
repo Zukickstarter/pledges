@@ -25,7 +25,7 @@ class App extends React.Component {
     const { pledges } = this.state;
     return (
         <div className="AppComponentDiv">
-
+          App component div
         </div>
     );
   }
