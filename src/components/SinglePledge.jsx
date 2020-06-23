@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const PledgeBox = styled.div`
   text-align: center;
-  font-family: Ariel;
+  font-family: Arial;
 `;
 
 const SinglePledge = (props) => {
