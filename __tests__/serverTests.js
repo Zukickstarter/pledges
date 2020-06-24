@@ -25,7 +25,7 @@ test('example.nPlusTwo(4) returns 6', () => {
  */
 test('when given an id (integer from 1 to 100), model.getPledges() returns a promise containing pledge data', async (done) => {
   expect.assertions(1);
-  return model.getPledges(5)
+  return model.getPledgeData(5)
     .then((result) => {
       expect(Array.isArray(result)).toBe(true);
       expect(result[0])
@@ -55,6 +55,26 @@ test('db.getAllListings returns an array of listings', async (done) => {
     })
     .catch((err) => {
       console.log('there was an error while testing db.getAllListings: ', err);
+      done();
+    });
+});
+
+/**
+ * database getCollaboratorsByListingId() test
+ */
+test('db.getCollaboratorsByListingId returns an array of collaborators', async (done) => {
+  expect.assertions(5);
+  return db.getCollaboratorsByListingId(4)
+    .then((result) => {
+      expect(Array.isArray(result)).toBe(true);
+      expect(result[0]).toHaveProperty('id');
+      expect(result[0]).toHaveProperty('imageURL');
+      expect(result[0]).toHaveProperty('name');
+      expect(result[0]).toHaveProperty('listingId');
+      done();
+    })
+    .catch((err) => {
+      console.log('error while testing db.getCollaboratorsByListingId: ', err);
       done();
     });
 });
