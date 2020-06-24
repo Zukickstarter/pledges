@@ -23,12 +23,21 @@ test('example.nPlusTwo(4) returns 6', () => {
 /**
  * model getPledges() test
  */
+
+// refactor to accommodate new db schema and model functionality
 test('when given an id (integer from 1 to 100), model.getPledges() returns a promise containing pledge data', async (done) => {
-  expect.assertions(1);
+  expect.assertions(7);
   return model.getPledgeData(5)
     .then((result) => {
-      expect(Array.isArray(result)).toBe(true);
-      expect(result[0])
+      // console.log('result from getPledgeData: ', result);
+      expect(result).toHaveProperty('id');
+      expect(result).toHaveProperty('listingTitle');
+      expect(result).toHaveProperty('pledges');
+      expect(result).toHaveProperty('creator');
+      expect(result).toHaveProperty('collaborators');
+      expect(Array.isArray(result['pledges'])).toBe(true);
+      expect(Array.isArray(result['collaborators'])).toBe(true);
+      done();
     })
     .catch((err) => {
       console.log('there was an error in the model test: ', err);
@@ -103,3 +112,61 @@ test('db.getPledgesByListingId returns an array of pledges from the pledgeOption
       done();
     });
 });
+
+/*
+const Creator = sequelize.define('creator', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  imageURL: {
+    type: DataTypes.STRING
+  },
+  name: {
+    type: DataTypes.STRING
+  },
+  location: {
+    type: DataTypes.STRING
+  },
+  description: {
+    type: DataTypes.STRING
+  },
+  lastLogin: {
+    type: DataTypes.STRING
+  },
+  website: {
+    type: DataTypes.STRING
+  },
+  listingId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Listing,
+      key: 'id'
+    }
+  }
+});
+*/
+// test('db.getCreatorByListingId returns a row from creators table', async (done) => {
+//   expect.assertions(8);
+//   return db.getCreatorByListingId(8)
+//     .then((result) => {
+//       // expect(Array.isArray(result)).toBe(true);
+//       // expect(result.length).toBe(1);
+//       expect(result).toHaveProperty('id');
+//       expect(result).toHaveProperty('imageURL');
+//       expect(result).toHaveProperty('name');
+//       expect(result).toHaveProperty('locations');
+//       expect(result).toHaveProperty('description');
+//       expect(result).toHaveProperty('lastLogin');
+//       expect(result).toHaveProperty('website');
+//       expect(result).toHaveProperty('listingId');
+//       done();
+//     })
+//     .catch((err) => {
+//       console.log('error in db.getCreatorByListingId test: ', err);
+//       done();
+//     })
+// });
+
+
