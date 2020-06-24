@@ -15,17 +15,19 @@ class App extends React.Component {
       id: '',
       listingTitle: '',
       pledges: [],
-      creator: '',
+      creator: {
+        imageURL: ''
+      },
       collaborators: []
     }
-  }
+  };
 
   componentDidMount() {
     const { pledges } = this.state;
     console.log('component did mount');
     axios.get('http://localhost:3003/api/pledges/6')
       .then((response) => {
-        console.log('response: ', response);
+        console.log('response.data: ', response.data);
         let { id, listingTitle, pledges, creator, collaborators } = response.data;
         this.setState({ id, listingTitle, pledges, creator, collaborators });
       })
@@ -40,8 +42,25 @@ class App extends React.Component {
     return (
         <div className="AppComponentDiv">
           <Title>
-            THIS IS THE TITLE
+            PLEDGES COMPONENT
           </Title>
+          <div className="creatorBoxDiv">
+            <div className="creatorImageURLDiv">
+              {creator.imageURL}
+            </div>
+            <div className="creatorNameDiv">
+              {creator.name}
+            </div>
+            <div className="creatorDescription">
+              {creator.description}
+            </div>
+            <div className="seeMoreLinkDiv">
+              See More
+            </div>
+          </div>
+          <div>
+            ===============
+          </div>
           <PledgeList
             pledges={pledges} />
         </div>

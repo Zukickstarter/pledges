@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PledgeBox = styled.div`
-  text-align: center;
-  font-family: Arial;
-`;
+// const PledgeBox = styled.div`
+//   text-align: center;
+//   font-family: Arial;
+// `;
 
 const SinglePledge = (props) => {
   const { pledge } = props;
   const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
   return (
-  <PledgeBox>
+  <div className="pledgeBox">
     <div>
       ID: {id}
     </div>
@@ -20,7 +20,7 @@ const SinglePledge = (props) => {
     <div>
       TITLE: {pledgeTitle}
     </div>
-  </PledgeBox>
+  </div>
   );
 };
 
