@@ -96,6 +96,29 @@ const getPledgesByListingId = async (id) => {
     });
 };
 
+const getCreatorByListingId = async (id) => {
+  return Creator.findAll({
+    where: {
+      listingId: id
+    }
+  })
+    .catch((err) => {
+      console.log('there was an error getting the creator in db.getCreatorByListingId: ', err);
+      return err;
+    });
+};
+
+const getCollaboratorsByListingId = async (id) => {
+  return Collaborator.findAll({
+    where: {
+      listingId: id
+    }
+  })
+    .catch((err) => {
+      console.log('there was an error getting all collaborators in db.getCollaboratorsByListingId: ', err);
+      return err;
+    });
+};
 
 const getAllListings = async () => {
   return Listing.findAll({})
@@ -146,5 +169,7 @@ module.exports = {
   addListing,
   addFourPledges,
   getPledgesByListingId,
-  getAllListings
+  getAllListings,
+  getCreatorByListingId,
+  getCollaboratorsByListingId
 };
