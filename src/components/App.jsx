@@ -59,7 +59,7 @@ class App extends React.Component {
           <div>
             <br></br>
           </div>
-          <div>
+          <div className="supportWordDiv">
             SUPPORT
           </div>
           <div className="pledgesDiv">
