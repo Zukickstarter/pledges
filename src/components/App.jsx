@@ -12,7 +12,11 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      pledges: []
+      id: '',
+      listingTitle: '',
+      pledges: [],
+      creator: '',
+      collaborators: []
     }
   }
 
@@ -20,25 +24,25 @@ class App extends React.Component {
     const { pledges } = this.state;
     console.log('component did mount');
     axios.get('http://localhost:3003/api/pledges/6')
-    .then((response) => {
-      this.setState({ pledges: response.data });
-    })
-    .catch((err) => {
-      console.log('error with get request: ', err);
-    });
+      .then((response) => {
+        let { id, listingTitle, pledges, creator, collaborators } = response;
+        this.setState({ id, listingTitle, pledges, creator, collaborators });
+      })
+      .catch((err) => {
+        console.log('error with get request: ', err);
+      });
   };
 
-
-
   render() {
-    const { pledges } = this.state;
+    const { id, listingTitle, pledges, creator, collaborators } = this.state;
+    console.log('this.state: ', this.state);
     return (
         <div className="AppComponentDiv">
           <Title>
             THIS IS THE TITLE
           </Title>
           <PledgeList
-            pledges={pledges}/>
+            pledges={pledges} />
         </div>
     );
   }

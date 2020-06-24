@@ -1,5 +1,5 @@
 const express = require('express');
-const { getPledges } = require('./model.js');
+const { getPledgeData } = require('./model.js');
 
 
 const app = express();
@@ -16,7 +16,7 @@ const port = 3003;
  */
 app.get('/api/pledges/:id', (req, res) => {
   let { id } = req.params;
-  return getPledges(id)
+  return getPledgeData(id)
     .then((response) => {
       if (response.length < 1) {
         res.status(404).send('id not found in database');

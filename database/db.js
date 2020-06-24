@@ -58,14 +58,72 @@ const PledgeOption = sequelize.define('pledgeOption', {
   }
 });
 
-PledgeOption.belongsTo(Listing);
+// imageURL, name, location, description, lastLogin, website, listingId
+const Creator = sequelize.define('creator', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  imageURL: {
+    type: DataTypes.STRING
+  },
+  name: {
+    type: DataTypes.STRING
+  },
+  location: {
+    type: DataTypes.STRING
+  },
+  description: {
+    type: DataTypes.STRING
+  },
+  lastLogin: {
+    type: DataTypes.STRING
+  },
+  website: {
+    type: DataTypes.STRING
+  },
+  listingId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Listing,
+      key: 'id'
+    }
+  }
+});
 
+// imageURL, name, listingId
+const Collaborator = sequelize.define('collaborator', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  imageURL: {
+    type: DataTypes.STRING
+  },
+  name: {
+    type: DataTypes.STRING
+  },
+  listingId: {
+    type: DataTypes.INTEGER,
+    references: {
+      model: Listing,
+      key: 'id'
+    }
+  }
+});
+
+PledgeOption.belongsTo(Listing);
+Creator.belongsTo(Listing);
+Collaborator.belongsTo(Listing);
 
 // ========================== init db =================================
 /**
  * initializes database with tables "listings" and "pledgeOptions"
  */
 const initializeDatabase = async () => {
+
   Listing.sync({ force: true })
     .catch((err) => {
       console.log('error in Listing.sync: ', err);
@@ -73,12 +131,30 @@ const initializeDatabase = async () => {
     .then(() => {
       PledgeOption.sync({ force: true });
     })
+    .then(() => {
+      Collaborator.sync({ force: true });
+    })
+    .then(() => {
+      Creator.sync({ force: true });
+    })
     .catch((err) => {
       console.log('error in PledgeOption.sync: ', err);
     });
 };
 
 // ======================= queries ===========================
+
+const getListingById = async (id) => {
+  return Listing.findAll({
+    where: {
+      id: id
+    }
+  })
+    .catch((err) => {
+      console.log('error in getListingById: ', err);
+    });
+};
+
 /**
  * executes a sequelize findAll() on pledgeOptions table where listingId = id
  * returns a promise
@@ -96,6 +172,29 @@ const getPledgesByListingId = async (id) => {
     });
 };
 
+const getCreatorByListingId = async (id) => {
+  return Creator.findAll({
+    where: {
+      listingId: id
+    }
+  })
+    .catch((err) => {
+      console.log('there was an error getting the creator in db.getCreatorByListingId: ', err);
+      return err;
+    });
+};
+
+const getCollaboratorsByListingId = async (id) => {
+  return Collaborator.findAll({
+    where: {
+      listingId: id
+    }
+  })
+    .catch((err) => {
+      console.log('there was an error getting all collaborators in db.getCollaboratorsByListingId: ', err);
+      return err;
+    });
+};
 
 const getAllListings = async () => {
   return Listing.findAll({})
@@ -121,7 +220,7 @@ const addListing = async (productName) => {
  * adds four rows to the "pledgeOptions" table in pledgesDb
  * @param {arrayOfPledges} arrayOfPledges
  */
-const addFourPledges = (arrayOfPledges) => {
+const addFourPledges = async (arrayOfPledges) => {
   return PledgeOption.bulkCreate(arrayOfPledges)
     .catch((err) => {
       console.log('error inside of db.addFourPledges: ', err);
@@ -129,6 +228,22 @@ const addFourPledges = (arrayOfPledges) => {
     });
 };
 
+
+const addCreator = async (creatorData) => {
+  return Creator.create(creatorData)
+    .catch((err) => {
+      console.log('error in db.addCreator: ', err);
+      return err;
+    });
+};
+
+const addFiveCollaborators = async (arrayOfCollaborators) => {
+  return Collaborator.bulkCreate(arrayOfCollaborators)
+    .catch((err) => {
+      console.log('error inside of db.addFiveCollaborators: ', err);
+      return err;
+    });
+};
 
 // ======================== auth =============================
 sequelize.authenticate()
@@ -146,5 +261,8 @@ module.exports = {
   addListing,
   addFourPledges,
   getPledgesByListingId,
-  getAllListings
+  getAllListings,
+  getCreatorByListingId,
+  getCollaboratorsByListingId,
+  getListingById
 };
