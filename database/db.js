@@ -1,7 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const { dbPassword } = require('../dbAuth.js');
+// const { dbPassword } = require('../dbAuth.js');
 
-const sequelize = new Sequelize('pledgesDb', 'root', dbPassword, {
+const sequelize = new Sequelize('pledgesDb', 'root', 'gimmie', {
   host: 'localhost',
   dialect: 'mysql'
 });

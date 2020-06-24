@@ -20,20 +20,22 @@ test('example.nPlusTwo(4) returns 6', () => {
 // });
 
 // ============== model tests ========================
+
+
 /**
  * model getPledges() test
  */
 test('when given an id (integer from 1 to 100), model.getPledges() returns a promise containing pledge data', async (done) => {
-  expect.assertions(1);
-  return model.getPledges(5)
+  expect.assertions(7);
+  return model.getPledgeData(5)
     .then((result) => {
-      expect(Array.isArray(result)).toBe(true);
-      expect(result[0])
-    })
-    .catch((err) => {
-      console.log('there was an error in the model test: ', err);
-    })
-    .then(() => {
+      expect(result).toHaveProperty('id');
+      expect(result).toHaveProperty('listingTitle');
+      expect(result).toHaveProperty('pledges');
+      expect(result).toHaveProperty('creator');
+      expect(result).toHaveProperty('collaborators');
+      expect(Array.isArray(result['pledges'])).toBe(true);
+      expect(Array.isArray(result['collaborators'])).toBe(true);
       done();
     });
 });
@@ -52,9 +54,21 @@ test('db.getAllListings returns an array of listings', async (done) => {
       expect(result[0]).toHaveProperty('id');
       expect(result[0]).toHaveProperty('listingTitle');
       done();
-    })
-    .catch((err) => {
-      console.log('there was an error while testing db.getAllListings: ', err);
+    });
+});
+
+/**
+ * database getCollaboratorsByListingId() test
+ */
+test('db.getCollaboratorsByListingId returns an array of collaborators', async (done) => {
+  expect.assertions(5);
+  return db.getCollaboratorsByListingId(4)
+    .then((result) => {
+      expect(Array.isArray(result)).toBe(true);
+      expect(result[0]).toHaveProperty('id');
+      expect(result[0]).toHaveProperty('imageURL');
+      expect(result[0]).toHaveProperty('name');
+      expect(result[0]).toHaveProperty('listingId');
       done();
     });
 });
@@ -77,9 +91,28 @@ test('db.getPledgesByListingId returns an array of pledges from the pledgeOption
       expect(result[0]).toHaveProperty('backers');
       expect(result[0]).toHaveProperty('listingId');
       done();
-    })
-    .catch((err) => {
-      console.log('there was an error while testing db.getPledgesByListingId: ', err);
+    });
+});
+
+/**
+ * database getCreatorByListingId test
+ */
+test('db.getCreatorByListingId returns a row from creators table', async (done) => {
+  expect.assertions(8);
+  return db.getCreatorByListingId(8)
+    .then((result) => {
+      // expect(Array.isArray(result)).toBe(true);
+      // expect(result.length).toBe(1);
+      expect(result[0]).toHaveProperty('id');
+      expect(result[0]).toHaveProperty('imageURL');
+      expect(result[0]).toHaveProperty('name');
+      expect(result[0]).toHaveProperty('location');
+      expect(result[0]).toHaveProperty('description');
+      expect(result[0]).toHaveProperty('lastLogin');
+      expect(result[0]).toHaveProperty('website');
+      expect(result[0]).toHaveProperty('listingId');
       done();
     });
 });
+
+

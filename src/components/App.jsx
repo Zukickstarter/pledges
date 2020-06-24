@@ -25,7 +25,8 @@ class App extends React.Component {
     console.log('component did mount');
     axios.get('http://localhost:3003/api/pledges/6')
       .then((response) => {
-        let { id, listingTitle, pledges, creator, collaborators } = response;
+        console.log('response: ', response);
+        let { id, listingTitle, pledges, creator, collaborators } = response.data;
         this.setState({ id, listingTitle, pledges, creator, collaborators });
       })
       .catch((err) => {
