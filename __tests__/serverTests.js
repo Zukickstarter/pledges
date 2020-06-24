@@ -129,19 +129,19 @@ const Creator = sequelize.define('creator', {
 });
 */
 test('db.getCreatorByListingId returns a row from creators table', async (done) => {
-  expect.assertions(1);
+  expect.assertions(8);
   return db.getCreatorByListingId(8)
     .then((result) => {
       // expect(Array.isArray(result)).toBe(true);
       // expect(result.length).toBe(1);
-      expect(result).toHaveProperty('id');
-      expect(result).toHaveProperty('imageURL');
-      expect(result).toHaveProperty('name');
-      expect(result).toHaveProperty('locations');
-      expect(result).toHaveProperty('description');
-      expect(result).toHaveProperty('lastLogin');
-      expect(result).toHaveProperty('website');
-      expect(result).toHaveProperty('listingId');
+      expect(result[0]).toHaveProperty('id');
+      expect(result[0]).toHaveProperty('imageURL');
+      expect(result[0]).toHaveProperty('name');
+      expect(result[0]).toHaveProperty('location');
+      expect(result[0]).toHaveProperty('description');
+      expect(result[0]).toHaveProperty('lastLogin');
+      expect(result[0]).toHaveProperty('website');
+      expect(result[0]).toHaveProperty('listingId');
       done();
     });
 });
