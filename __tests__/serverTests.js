@@ -20,11 +20,11 @@ test('example.nPlusTwo(4) returns 6', () => {
 // });
 
 // ============== model tests ========================
+
+
 /**
  * model getPledges() test
  */
-
-// refactor to accommodate new db schema and model functionality
 test('when given an id (integer from 1 to 100), model.getPledges() returns a promise containing pledge data', async (done) => {
   expect.assertions(7);
   return model.getPledgeData(5)
