@@ -1,18 +1,16 @@
 import React from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import PledgeList from './PledgeList.jsx';
-
-const Title = styled.h1`
-  font-size: 1.5em;
-  text-align: center;
-`;
+import Title from './styled/Title.jsx';
+import CreatorWrapper from './styled/Creator.jsx';
+import styled from 'styled-components';
+import './pledges-styles.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: '',
+      id: props.id,
       listingTitle: '',
       pledges: [],
       creator: {
@@ -23,9 +21,9 @@ class App extends React.Component {
   };
 
   componentDidMount() {
-    const { pledges } = this.state;
+    const { id, pledges } = this.state;
     console.log('component did mount');
-    axios.get('http://localhost:3003/api/pledges/6')
+    axios.get(`http://localhost:3003/api/pledges/${id}`)
       .then((response) => {
         console.log('response.data: ', response.data);
         let { id, listingTitle, pledges, creator, collaborators } = response.data;
@@ -40,13 +38,13 @@ class App extends React.Component {
     const { id, listingTitle, pledges, creator, collaborators } = this.state;
     console.log('this.state: ', this.state);
     return (
-        <div className="AppComponentDiv">
+        <div className="pledgeComponent AppComponentDiv">
           <Title>
-            PLEDGES COMPONENT
+            {listingTitle}
           </Title>
-          <div className="creatorBoxDiv">
+          <CreatorWrapper>
             <div className="creatorImageURLDiv">
-              {creator.imageURL}
+              <img className="creatorImage" src={creator.imageURL} />
             </div>
             <div className="creatorNameDiv">
               {creator.name}
@@ -57,9 +55,9 @@ class App extends React.Component {
             <div className="seeMoreLinkDiv">
               See More
             </div>
-          </div>
+          </CreatorWrapper>
           <div>
-            ===============
+            <br></br>
           </div>
           <div>
             SUPPORT

@@ -1,0 +1,11 @@
+
+
+
+.pledgeComponent.AppComponentDiv {
+  overflow-y: scroll;
+  max-width: 400px;
+  border: 2px;
+}
+
+
+
