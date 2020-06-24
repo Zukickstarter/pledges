@@ -1,5 +1,5 @@
 const faker = require('faker');
-const { addListing, addFourPledges } = require('./db.js');
+const { addListing, addFourPledges, addCreator, addFiveCollaborators } = require('./db.js');
 
 // ===================== helpers ======================
 
@@ -30,6 +30,18 @@ const randomFutureDate = () => {
 };
 
 /**
+ * create random past date in "[month] [year]" format
+ */
+const randomPastDate = () => {
+  let result = '';
+  result += faker.date.month();
+  result += ' ';
+  let year = (2020 - Math.ceil(Math.random() * 2)).toString();
+  result += year;
+  return result;
+}
+
+/**
  * create fake listing product
  */
 const createRandomListingProduct = () => {
@@ -54,7 +66,7 @@ const createFourPledges = (dataValues) => {
     let pledge = {
       price: prices[i],
       pledgeTitle: pledgeTitles[i],
-      description: `${listingTitle} Co. will send you ${randomNumber()} ${randomProduct()}'s in the mail!`,
+      description: `${listingTitle} Co. will send you ${randomNumber()} ${randomProduct()}s in the mail!`,
       estDelivery: randomFutureDate(),
       backers: Math.floor(Math.random() * 50),
       listingId: listingId
@@ -63,6 +75,41 @@ const createFourPledges = (dataValues) => {
   }
   return result;
 };
+
+
+const createProfile = async (id) => {
+  let imageURL = faker.image.avatar();
+  let name = faker.name.firstName() + ' ' + faker.name.lastName();
+  let location = faker.address.city() + ', ' + faker.address.state();
+  let description = faker.lorem.sentence();
+  let lastLogin = randomPastDate();
+  let website = faker.internet.url();
+  let listingId = id;
+  let profile = { imageURL, name, location, description, lastLogin, website, listingId };
+  return profile;
+};
+
+
+/**
+ * create a single "collaborator" profile
+ */
+const createCollaborator = (id) => {
+  let imageURL = faker.image.avatar();
+  let name = faker.name.firstName() + ' ' + faker.name.lastName();
+  let listingId = id;
+  let result = { imageURL, name, listingId };
+  return result;
+};
+
+const createFiveCollaborators = (id) => {
+  let result = [];
+  for (let i = 0; i < 5; i++) {
+    result.push(createCollaborator(id));
+  }
+  return result;
+};
+
+
 
 // // test createFourPledges
 // let fourPledges = createFourPledges({id: 3, listingTitle: 'testTitle'});
@@ -77,7 +124,6 @@ const createFourPledges = (dataValues) => {
 const seedListingAndPledges = () => {
   // generate product
   let listingProduct = createRandomListingProduct();
-
   // add product to listings table
   return addListing(listingProduct)
   // return product's listings table id and listingTitle
@@ -86,13 +132,30 @@ const seedListingAndPledges = () => {
       return dbResponse.dataValues;
     })
     .then((dataValues) => {
+      console.log('dataValues: ', dataValues);
+      let promiseArray = [];
+
       // create four pledges associated with that listing:
       let fourPledges = createFourPledges(dataValues);
-      // add four pledges to the pledges table
-      return addFourPledges(fourPledges);
+      promiseArray.push(addFourPledges(fourPledges));
+
+      // create a creator profile associated with that listing
+      createProfile(dataValues.id)
+        .then((profile) => {
+          promiseArray.push(addCreator(profile));
+        })
+        .catch((err) => {
+          console.log('there was an error creating the profile: ', err);
+        })
+
+      // create five collaborators associated with that listing
+      let fiveCollaborators = createFiveCollaborators(dataValues.id);
+      promiseArray.push(addFiveCollaborators(fiveCollaborators));
+
+      return Promise.all(promiseArray);
     })
-    .then((dbResponse) => {
-      console.log('success! dbResponse.dataValues: ', dbResponse.dataValues);
+    .then((dbResponses) => {
+      console.log('success! dbResponses: ', dbResponses);
     })
     .catch((err) => {
       console.log('error seeding data: ', err);
@@ -109,3 +172,4 @@ const populate100Listings = () => {
 };
 
 populate100Listings();
+

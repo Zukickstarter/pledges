@@ -20,14 +20,13 @@ class App extends React.Component {
     const { pledges } = this.state;
     console.log('component did mount');
     axios.get('http://localhost:3003/api/pledges/6')
-    .then((response) => {
-      this.setState({ pledges: response.data });
-    })
-    .catch((err) => {
-      console.log('error with get request: ', err);
-    });
+      .then((response) => {
+        this.setState({ pledges: response.data });
+      })
+      .catch((err) => {
+        console.log('error with get request: ', err);
+      });
   };
-
 
 
   render() {
@@ -38,7 +37,7 @@ class App extends React.Component {
             THIS IS THE TITLE
           </Title>
           <PledgeList
-            pledges={pledges}/>
+            pledges={pledges} />
         </div>
     );
   }
