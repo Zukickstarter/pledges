@@ -61,8 +61,22 @@ class App extends React.Component {
           <div>
             ===============
           </div>
-          <PledgeList
-            pledges={pledges} />
+          <div>
+            SUPPORT
+          </div>
+          <div className="pledgesDiv">
+            <div className="noRewardPledgeDiv">
+              Pledge without a reward
+            </div>
+            <div className="noRewardInputDiv">
+              <input type="text"></input>
+            </div>
+            <div className="noRewardDescriptionDiv">
+              Back it because you believe in it. Support the project for no reward, just because it speaks to you.
+            </div>
+            <PledgeList
+              pledges={pledges} />
+          </div>
         </div>
     );
   }
