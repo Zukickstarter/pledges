@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PledgeList from './PledgeList.jsx';
 import Title from './styled/Title.jsx';
-import CreatorWrapper from './styled/Creator.jsx';
+import CreatorWrapper from './styled/CreatorWrapper.jsx';
 import styled from 'styled-components';
 import './pledges-styles.css';
 
@@ -64,13 +64,15 @@ class App extends React.Component {
           </div>
           <div className="pledgesDiv">
             <div className="noRewardPledgeDiv">
-              Pledge without a reward
-            </div>
-            <div className="noRewardInputDiv">
-              <input type="text"></input>
-            </div>
-            <div className="noRewardDescriptionDiv">
-              Back it because you believe in it. Support the project for no reward, just because it speaks to you.
+              <div className="noRewardTitleDiv">
+                Pledge without a reward
+              </div>
+              <div className="noRewardInputDiv">
+                <input type="text"></input>
+              </div>
+              <div className="noRewardDescriptionDiv">
+                Back it because you believe in it. Support the project for no reward, just because it speaks to you.
+              </div>
             </div>
             <PledgeList
               pledges={pledges} />
