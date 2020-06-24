@@ -94,40 +94,9 @@ test('db.getPledgesByListingId returns an array of pledges from the pledgeOption
     });
 });
 
-/*
-const Creator = sequelize.define('creator', {
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
-  },
-  imageURL: {
-    type: DataTypes.STRING
-  },
-  name: {
-    type: DataTypes.STRING
-  },
-  location: {
-    type: DataTypes.STRING
-  },
-  description: {
-    type: DataTypes.STRING
-  },
-  lastLogin: {
-    type: DataTypes.STRING
-  },
-  website: {
-    type: DataTypes.STRING
-  },
-  listingId: {
-    type: DataTypes.INTEGER,
-    references: {
-      model: Listing,
-      key: 'id'
-    }
-  }
-});
-*/
+/**
+ * database getCreatorByListingId test
+ */
 test('db.getCreatorByListingId returns a row from creators table', async (done) => {
   expect.assertions(8);
   return db.getCreatorByListingId(8)
