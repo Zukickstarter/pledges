@@ -76,7 +76,10 @@ const createFourPledges = (dataValues) => {
   return result;
 };
 
-
+/**
+ * create a profile to be used for row in "creators" table
+ * @param {integer} id
+ */
 const createProfile = async (id) => {
   let imageURL = faker.image.avatar();
   let name = faker.name.firstName() + ' ' + faker.name.lastName();
@@ -101,6 +104,10 @@ const createCollaborator = (id) => {
   return result;
 };
 
+/**
+ * call createCollaborator 5 times, return array of collaborators to add to "collaborators" table
+ * @param {integer} id
+ */
 const createFiveCollaborators = (id) => {
   let result = [];
   for (let i = 0; i < 5; i++) {
@@ -119,7 +126,7 @@ const createFiveCollaborators = (id) => {
 // =================== seed =====================================
 
 /**
- * adds 1 listing and four associated pledges to the db
+ * adds 1 listing, 4 pledges, 1 creator, and 5 collaborators to the db
  */
 const seedListingAndPledges = () => {
   // generate product
@@ -172,6 +179,6 @@ const populate100Listings = () => {
 };
 
 
-
+// // uncomment to allow for database seeding
 // populate100Listings();
 

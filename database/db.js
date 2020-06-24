@@ -58,7 +58,10 @@ const PledgeOption = sequelize.define('pledgeOption', {
   }
 });
 
-// imageURL, name, location, description, lastLogin, website, listingId
+
+/**
+ * defines schema for "creators" table
+ */
 const Creator = sequelize.define('creator', {
   id: {
     type: DataTypes.INTEGER,
@@ -92,7 +95,9 @@ const Creator = sequelize.define('creator', {
   }
 });
 
-// imageURL, name, listingId
+/**
+ * defines schema for "collaborators" table
+ */
 const Collaborator = sequelize.define('collaborator', {
   id: {
     type: DataTypes.INTEGER,
@@ -144,6 +149,10 @@ const initializeDatabase = async () => {
 
 // ======================= queries ===========================
 
+/**
+ * returns a single listing from the "listings" table
+ * @param {integer} id
+ */
 const getListingById = async (id) => {
   return Listing.findAll({
     where: {
@@ -172,6 +181,10 @@ const getPledgesByListingId = async (id) => {
     });
 };
 
+/**
+ * returns the creator of a given listing by listing id. returns a promise.
+ * @param {integer} id
+ */
 const getCreatorByListingId = async (id) => {
   return Creator.findAll({
     where: {
@@ -184,6 +197,10 @@ const getCreatorByListingId = async (id) => {
     });
 };
 
+/**
+ * gets all rows from "collaborators" table that match the given id. returns a promise.
+ * @param {integer} id
+ */
 const getCollaboratorsByListingId = async (id) => {
   return Collaborator.findAll({
     where: {
@@ -196,6 +213,9 @@ const getCollaboratorsByListingId = async (id) => {
     });
 };
 
+/**
+ * gets all from "listings" table. returns a promise
+ */
 const getAllListings = async () => {
   return Listing.findAll({})
     .catch((err) => {
@@ -205,7 +225,7 @@ const getAllListings = async () => {
 
 // ===================== seed functions ======================
 /**
- * adds a single listing to the listings table in pledgesDb
+ * adds a single listing to the listings table in pledgesDb. returns a promise.
  * @param {productName} productName
  */
 const addListing = async (productName) => {
@@ -217,7 +237,7 @@ const addListing = async (productName) => {
 };
 
 /**
- * adds four rows to the "pledgeOptions" table in pledgesDb
+ * adds four rows to the "pledgeOptions" table in pledgesDb. returns a promise.
  * @param {arrayOfPledges} arrayOfPledges
  */
 const addFourPledges = async (arrayOfPledges) => {
@@ -228,7 +248,10 @@ const addFourPledges = async (arrayOfPledges) => {
     });
 };
 
-
+/**
+ * adds a row to the "creators" table. returns a promise.
+ * @param {object} creatorData
+ */
 const addCreator = async (creatorData) => {
   return Creator.create(creatorData)
     .catch((err) => {
@@ -237,6 +260,10 @@ const addCreator = async (creatorData) => {
     });
 };
 
+/**
+ * bulk adds rows to the "collaborators" table. returns a promise.
+ * @param {array} arrayOfCollaborators
+ */
 const addFiveCollaborators = async (arrayOfCollaborators) => {
   return Collaborator.bulkCreate(arrayOfCollaborators)
     .catch((err) => {
