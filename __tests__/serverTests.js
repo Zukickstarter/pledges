@@ -29,7 +29,6 @@ test('when given an id (integer from 1 to 100), model.getPledges() returns a pro
   expect.assertions(7);
   return model.getPledgeData(5)
     .then((result) => {
-      // console.log('result from getPledgeData: ', result);
       expect(result).toHaveProperty('id');
       expect(result).toHaveProperty('listingTitle');
       expect(result).toHaveProperty('pledges');
@@ -37,12 +36,6 @@ test('when given an id (integer from 1 to 100), model.getPledges() returns a pro
       expect(result).toHaveProperty('collaborators');
       expect(Array.isArray(result['pledges'])).toBe(true);
       expect(Array.isArray(result['collaborators'])).toBe(true);
-      done();
-    })
-    .catch((err) => {
-      console.log('there was an error in the model test: ', err);
-    })
-    .then(() => {
       done();
     });
 });
@@ -61,10 +54,6 @@ test('db.getAllListings returns an array of listings', async (done) => {
       expect(result[0]).toHaveProperty('id');
       expect(result[0]).toHaveProperty('listingTitle');
       done();
-    })
-    .catch((err) => {
-      console.log('there was an error while testing db.getAllListings: ', err);
-      done();
     });
 });
 
@@ -80,10 +69,6 @@ test('db.getCollaboratorsByListingId returns an array of collaborators', async (
       expect(result[0]).toHaveProperty('imageURL');
       expect(result[0]).toHaveProperty('name');
       expect(result[0]).toHaveProperty('listingId');
-      done();
-    })
-    .catch((err) => {
-      console.log('error while testing db.getCollaboratorsByListingId: ', err);
       done();
     });
 });
@@ -105,10 +90,6 @@ test('db.getPledgesByListingId returns an array of pledges from the pledgeOption
       expect(result[0]).toHaveProperty('estDelivery');
       expect(result[0]).toHaveProperty('backers');
       expect(result[0]).toHaveProperty('listingId');
-      done();
-    })
-    .catch((err) => {
-      console.log('there was an error while testing db.getPledgesByListingId: ', err);
       done();
     });
 });
@@ -147,26 +128,22 @@ const Creator = sequelize.define('creator', {
   }
 });
 */
-// test('db.getCreatorByListingId returns a row from creators table', async (done) => {
-//   expect.assertions(8);
-//   return db.getCreatorByListingId(8)
-//     .then((result) => {
-//       // expect(Array.isArray(result)).toBe(true);
-//       // expect(result.length).toBe(1);
-//       expect(result).toHaveProperty('id');
-//       expect(result).toHaveProperty('imageURL');
-//       expect(result).toHaveProperty('name');
-//       expect(result).toHaveProperty('locations');
-//       expect(result).toHaveProperty('description');
-//       expect(result).toHaveProperty('lastLogin');
-//       expect(result).toHaveProperty('website');
-//       expect(result).toHaveProperty('listingId');
-//       done();
-//     })
-//     .catch((err) => {
-//       console.log('error in db.getCreatorByListingId test: ', err);
-//       done();
-//     })
-// });
+test('db.getCreatorByListingId returns a row from creators table', async (done) => {
+  expect.assertions(1);
+  return db.getCreatorByListingId(8)
+    .then((result) => {
+      // expect(Array.isArray(result)).toBe(true);
+      // expect(result.length).toBe(1);
+      expect(result).toHaveProperty('id');
+      expect(result).toHaveProperty('imageURL');
+      expect(result).toHaveProperty('name');
+      expect(result).toHaveProperty('locations');
+      expect(result).toHaveProperty('description');
+      expect(result).toHaveProperty('lastLogin');
+      expect(result).toHaveProperty('website');
+      expect(result).toHaveProperty('listingId');
+      done();
+    });
+});
 
 
