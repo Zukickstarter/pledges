@@ -143,6 +143,18 @@ const initializeDatabase = async () => {
 };
 
 // ======================= queries ===========================
+
+const getListingById = async (id) => {
+  return Listing.findAll({
+    where: {
+      id: id
+    }
+  })
+    .catch((err) => {
+      console.log('error in getListingById: ', err);
+    });
+};
+
 /**
  * executes a sequelize findAll() on pledgeOptions table where listingId = id
  * returns a promise
@@ -251,5 +263,6 @@ module.exports = {
   getPledgesByListingId,
   getAllListings,
   getCreatorByListingId,
-  getCollaboratorsByListingId
+  getCollaboratorsByListingId,
+  getListingById
 };
