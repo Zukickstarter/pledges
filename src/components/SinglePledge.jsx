@@ -11,15 +11,31 @@ class SinglePledge extends React.Component {
       selected: false
     }
   }
-  // console.log('estDelivery: ', estDelivery);
 
+  clickHandler(event) {
+    const { selected } = this.state;
+    this.setState({ selected: !selected });
+    console.log('selected: ', selected);
+  }
+
+  renderView() {
+    if (selected) {
+      console.log('selected')
+    } else {
+      console.log('not selected');
+    }
+  }
 
   render() {
     const { selected } = this.state;
     const { pledge } = this.props;
     const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
     return (
-      <div className="SinglePledgeComponentDiv">
+      <div
+        className="SinglePledgeComponentDiv"
+        onClick={(event) => {
+          this.clickHandler(event.target);
+        }} >
         <div className="pledgePriceDiv">
           Pledge {price} or more
         </div>
