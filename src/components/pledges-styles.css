@@ -1,0 +1,37 @@
+
+
+
+.pledgeComponent.AppComponentDiv {
+  overflow-y: scroll;
+  height: auto;
+  max-height: 100vh;
+  max-width: 400px;
+  border: 2px;
+  font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
+}
+
+.pledgeComponent .creatorImage {
+  border-radius: 50%;
+}
+
+.pledgeComponent .supportWordDiv {
+
+  padding-bottom: 20px;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.pledgeComponent .noRewardPledgeDiv {
+  margin-top: 15px;
+  padding: 10px;
+  border: solid black;
+}
+
+.pledgeComponent .pledgeBox {
+  margin-top: 15px;
+  padding: 10px;
+  border: solid black;
+}
+
+
+

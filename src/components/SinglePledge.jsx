@@ -1,26 +1,49 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PledgeBox = styled.div`
-  text-align: center;
-  font-family: Arial;
-`;
+// const PledgeBox = styled.div`
+//   text-align: center;
+//   font-family: Arial;
+// `;
 
 const SinglePledge = (props) => {
   const { pledge } = props;
   const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
   return (
-  <PledgeBox>
-    <div>
-      ID: {id}
+  <div className="pledgeBox">
+    <div className="pledgePriceDiv">
+      Pledge {price} or more.
     </div>
-    <div>
-      PRICE: {price}
+    <div className="pledgeTitleDiv">
+      {pledgeTitle}
     </div>
-    <div>
-      TITLE: {pledgeTitle}
+    <div className="pledgeDescriptionDiv">
+      {description}
     </div>
-  </PledgeBox>
+    <div className="pledgeEstDeliveryDiv">
+      estimated delivery: {estDelivery}
+    </div>
+    <div className="pledgeBackersDiv">
+      backers: {backers}
+    </div>
+    <div className="pledgeDropDownDiv">
+      <div className="dropDownShippingDestDiv">
+        Shipping Destination:
+        <div>
+          <input type="text"></input>
+        </div>
+      </div>
+      <div className="dropDownPledgeAmountDiv">
+        Pledge Amount
+        <div>
+          <input type="text"></input>
+        </div>
+      </div>
+      <div className="dropDownContinueButton">
+        <button>Continue</button>
+      </div>
+    </div>
+  </div>
   );
 };
 
