@@ -13,24 +13,46 @@ class SinglePledge extends React.Component {
     }
   }
 
+  /**
+   * changes this.state.hovered to true
+   * @param {DOM element} target
+   */
   showGreenOverlay(target) {
     const { selected, hovered } = this.state;
     this.setState({ hovered: true });
   }
 
+  /**
+   * changes this.state.hovered to false
+   * @param {DOM element} target
+   */
   hideGreenOverlay(target) {
     const { selected, hovered } = this.state;
     this.setState({ hovered: false });
   }
 
+  /**
+   * handles mouse-over functionality for any instance of this component
+   * @param {event} event
+   */
   handleMouseOver(event) {
     this.showGreenOverlay(event.target);
   }
 
+  /**
+   * handles mouse-leave functionality for any instance of this component
+   * @param {event} event
+   */
   handleMouseLeave(event) {
     this.hideGreenOverlay(event.target);
   }
 
+  /**
+   * checks if hovered but not yet selected.
+   * if so, returns green overlay div.
+   * css is used to have this div render on top of the entire component
+   * click handler sets hovered to false and selected to true, ensuring that this.renderView() renders correctly
+   */
   renderGreenOverlay() {
     const { hovered, selected } = this.state;
     if (hovered && !selected) {
@@ -48,6 +70,10 @@ class SinglePledge extends React.Component {
     }
   }
 
+  /**
+   * checks if this.state.selected is true
+   * if so, extends component to include a shipping destination text-input and a <MoneyInput /> component
+   */
   renderView() {
     const { selected, hovered } = this.state;
     console.log('selected: ', selected);
@@ -77,7 +103,6 @@ class SinglePledge extends React.Component {
 
   render() {
     const { selected, hovered } = this.state;
-    console.log('selected: ', selected);
     const { pledge } = this.props;
     const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
     return (
