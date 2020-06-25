@@ -1,14 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import MoneyInput from './MoneyInput.jsx';
-// const PledgeBox = styled.div`
-//   text-align: center;
-//   font-family: Arial;
-// `;
+import EstDelivery from './EstDelivery.jsx';
+
 
 const SinglePledge = (props) => {
   const { pledge } = props;
   const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
+  // console.log('estDelivery: ', estDelivery);
   return (
     <div className="SinglePledgeComponentDiv">
       <div className="pledgePriceDiv">
@@ -20,9 +19,7 @@ const SinglePledge = (props) => {
       <div className="pledgeDescriptionDiv">
         {description}
       </div>
-      <div className="pledgeEstDeliveryDiv">
-        estimated delivery: {estDelivery}
-      </div>
+      <EstDelivery estDelivery={estDelivery} />
       <div className="pledgeBackersDiv">
         backers: {backers}
       </div>
@@ -38,7 +35,7 @@ const SinglePledge = (props) => {
         <MoneyInput />
         </div>
         <div className="dropDownContinueButton">
-          <button>Continue</button>
+          <button className="continueButton">Continue</button>
         </div>
       </div>
     </div>

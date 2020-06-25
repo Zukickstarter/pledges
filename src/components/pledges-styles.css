@@ -5,7 +5,7 @@
   overflow-y: scroll;
   height: auto;
   max-height: 100vh;
-  max-width: 350px;
+  max-width: 320px;
   border: 2px;
   font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
 }
@@ -55,11 +55,20 @@
   border: solid rgb(200, 200, 200) 1px;
 }
 
+/* applies style to all child components unless over-ridden */
 .pledgeComponent .SinglePledgeComponentDiv * {
   padding: 10px;
 }
 
+.pledgeComponent .pledgeDescriptionDiv {
+  font-size: small;
+  color: grey;
+}
 
-
+.pledgeComponent .pledgeEstDeliveryDiv {
+  padding: 0px;
+  font-size: x-small;
+  color: grey;
+}
 
 
