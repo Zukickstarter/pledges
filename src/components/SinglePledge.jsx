@@ -15,31 +15,29 @@ class SinglePledge extends React.Component {
 
   showGreenOverlay(target) {
     const { selected, hovered } = this.state;
-    // console.log('showGreenThing firing on target: ', target);
     this.setState({ hovered: true });
   }
 
   hideGreenOverlay(target) {
     const { selected, hovered } = this.state;
-    // console.log('hideGreenThing firing on target: ', target);
     this.setState({ hovered: false });
   }
 
   handleMouseOver(event) {
-    // console.log('handleMouseOver firing with target: ', event.target);
     this.showGreenOverlay(event.target);
   }
 
   handleMouseLeave(event) {
-    // console.log('handleMouseLeave firing with target: ', event.target);
     this.hideGreenOverlay(event.target);
   }
 
   renderGreenOverlay() {
-    const { hovered } = this.state;
-    if (hovered) {
+    const { hovered, selected } = this.state;
+    if (hovered && !selected) {
       return (
-        <div className="greenThing">
+        <div className="greenThing" onClick={() => {
+          this.setState({ hovered: false, selected: true });
+        }}>
           <div className="greenThingText">
             select this reward
           </div>
@@ -104,8 +102,8 @@ class SinglePledge extends React.Component {
         <div className="pledgeBackersDiv">
           backers: {backers}
         </div>
-        {/* {this.renderView()} */}
         {this.renderGreenOverlay()}
+        {this.renderView()}
       </div>
     );
   };
