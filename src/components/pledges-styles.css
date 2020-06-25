@@ -55,6 +55,10 @@
   border: solid rgb(200, 200, 200) 1px;
 }
 
+/* .pledgeComponent .SinglePledgeComponentDiv:hover {
+  background-color: green;
+} */
+
 /* applies style to all child components unless over-ridden */
 .pledgeComponent .SinglePledgeComponentDiv * {
   padding: 10px;
