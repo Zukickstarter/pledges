@@ -14,20 +14,38 @@ class App extends React.Component {
       listingTitle: '',
       pledges: [],
       creator: {
-        imageURL: ''
+        totalBackers: 'First created - ',
+        id: '',
+        imageURL: '',
+        description: '',
+        name: '',
+        location: '',
+        website: ''
       },
       collaborators: []
     }
   };
 
+  calculateTotalBackers() {
+    const { pledges, creator } = this.state;
+    let totalBackers = 0;
+    for (let i = 0; i < pledges.length; i++) {
+      totalBackers += pledges[i].backers;
+    }
+    let creatorCopy = {...creator};
+    creatorCopy.totalBackers = 'First created - ' + totalBackers.toString();
+    this.setState({ creator: creatorCopy });
+  }
+
   componentDidMount() {
-    const { id, pledges } = this.state;
+    const { id, pledges, creator } = this.state;
     console.log('component did mount');
     axios.get(`http://localhost:3003/api/pledges/${id}`)
       .then((response) => {
         console.log('response.data: ', response.data);
         let { id, listingTitle, pledges, creator, collaborators } = response.data;
         this.setState({ id, listingTitle, pledges, creator, collaborators });
+        this.calculateTotalBackers();
       })
       .catch((err) => {
         console.log('error with get request: ', err);
