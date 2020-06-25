@@ -76,7 +76,6 @@ class SinglePledge extends React.Component {
    */
   renderView() {
     const { selected, hovered } = this.state;
-    console.log('selected: ', selected);
     if (selected) {
       return (
         <div className="pledgeDropDownDiv">

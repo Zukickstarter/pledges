@@ -94,3 +94,20 @@
   color: grey;
 }
 
+.pledgeComponent .boldText {
+  font-weight: bold;
+}
+
+.pledgeComponent .noRewardPledgeDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.pledgeComponent .noRewardPledgeDiv * {
+  padding: 10px;
+}
+
+.pledgeComponent .noRewardDescriptionDiv {
+  background-image: -webkit-linear-gradient(top, #DBE7FF, #FFF2EC);
+}
