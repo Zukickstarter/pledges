@@ -111,3 +111,20 @@
 .pledgeComponent .noRewardDescriptionDiv {
   background-image: -webkit-linear-gradient(top, #DBE7FF, #FFF2EC);
 }
+
+.pledgeComponent .MoneyInputComponentDiv {
+  display: flex;
+}
+
+.pledgeComponent .moneyInputDiv {
+  padding-left: 0px;
+}
+
+.pledgeComponent .moneySignDiv {
+  border: 1px solid grey;
+  padding-top: 4%;
+  padding-bottom: 0;
+  margin: 10px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
