@@ -75,7 +75,12 @@ class App extends React.Component {
             </div>
             <MoneyInput />
             <div className="noRewardDescriptionDiv">
-              Back it because you believe in it. Support the project for no reward, just because it speaks to you.
+              <div className="boldText">
+                Back it because you believe in it.
+              </div>
+              <div>
+                Support the project for no reward, just because it speaks to you.
+              </div>
             </div>
           </div>
           <PledgeList

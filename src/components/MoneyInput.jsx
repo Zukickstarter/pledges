@@ -4,7 +4,10 @@ const MoneyInput = (props) => {
   const {  } = props;
   return (
     <div className="MoneyInputComponentDiv">
-      <input type="text"></input>
+      <span className="moneySignDiv">$</span>
+      <div className="moneyInputDiv">
+        <input type="text"></input>
+      </div>
     </div>
   );
 };
