@@ -16,6 +16,16 @@
 }
 
 .pledgeComponent .creatorNameDiv {
+  font-size: large;
+  font-weight: bold;
+  padding: 2%;
+}
+
+.pledgeComponent .creatorDescription {
+  padding-top: 5%;
+}
+
+.pledgeComponent .creatorNameDiv {
   margin-top: 20%;
 }
 

@@ -24,9 +24,15 @@ class App extends React.Component {
         location: '',
         website: ''
       },
-      collaborators: []
+      collaborators: [],
+      modalView: false
     }
+    this.handleSeeMoreClick = this.handleSeeMoreClick.bind(this);
   };
+
+  handleSeeMoreClick() {
+    console.log('SEND IT TO THE MODAL');
+  }
 
   calculateTotalBackers() {
     const { pledges, creator } = this.state;
@@ -60,7 +66,9 @@ class App extends React.Component {
     return (
       <div className="pledgeComponent AppComponentDiv">
         <CreatorWrapper>
-          <Creator creator={creator} />
+          <Creator
+            creator={creator}
+            handleSeeMoreClick={this.handleSeeMoreClick} />
         </CreatorWrapper>
         <div className="supportWordDiv">
           SUPPORT
