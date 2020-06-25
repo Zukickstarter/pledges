@@ -5,9 +5,13 @@
   overflow-y: scroll;
   height: auto;
   max-height: 100vh;
-  max-width: 400px;
+  max-width: 350px;
   border: 2px;
   font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
+}
+
+.pledgeComponent .creatorImageURLDiv {
+  text-align: center;
 }
 
 .pledgeComponent .creatorImage {
@@ -15,23 +19,47 @@
 }
 
 .pledgeComponent .supportWordDiv {
-
+  margin-top: 15px;
   padding-bottom: 20px;
   font-weight: 400;
   font-size: 1.1rem;
 }
 
-.pledgeComponent .noRewardPledgeDiv {
-  margin-top: 15px;
-  padding: 10px;
-  border: solid black;
+.pledgeComponent .MoneyInputComponentDiv {
+  padding: 5px;
 }
 
-.pledgeComponent .pledgeBox {
+.pledgeComponent .noRewardPledgeDiv {
+  margin-right: 10px;
   margin-top: 15px;
   padding: 10px;
-  border: solid black;
+  border: solid rgb(200, 200, 200) 1px;
 }
+
+/* .pledgeComponent .noRewardTitleDiv {
+  margin-bottom: 5px;
+}
+
+.pledgeComponent .pledgePriceDiv {
+  padding: 10px;
+} */
+
+.pledgeComponent .pledgeTitleDiv {
+  padding: 10px;
+}
+
+.pledgeComponent .SinglePledgeComponentDiv {
+  margin-right: 10px;
+  margin-top: 15px;
+  padding: 10px;
+  border: solid rgb(200, 200, 200) 1px;
+}
+
+.pledgeComponent .SinglePledgeComponentDiv * {
+  padding: 10px;
+}
+
+
 
 
 

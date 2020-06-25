@@ -4,8 +4,9 @@ import PledgeList from './PledgeList.jsx';
 import Title from './styled/Title.jsx';
 import CreatorWrapper from './styled/CreatorWrapper.jsx';
 import styled from 'styled-components';
-import './pledges-styles.css';
 import Creator from './Creator.jsx';
+import MoneyInput from './MoneyInput.jsx';
+import './pledges-styles.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class App extends React.Component {
       totalBackers += pledges[i].backers;
     }
     let creatorCopy = {...creator};
-    creatorCopy.totalBackers = 'First created - ' + totalBackers.toString();
+    creatorCopy.totalBackers = 'First created - ' + totalBackers.toString() + ' backers';
     this.setState({ creator: creatorCopy });
   }
 
@@ -57,32 +58,30 @@ class App extends React.Component {
     const { id, listingTitle, pledges, creator, collaborators } = this.state;
     console.log('this.state: ', this.state);
     return (
-        <div className="pledgeComponent AppComponentDiv">
-          <Title>
-            {listingTitle}
-          </Title>
-          <CreatorWrapper>
-            <Creator creator={creator} />
-          </CreatorWrapper>
-          <div className="supportWordDiv">
-            SUPPORT
-          </div>
-          <div className="pledgesDiv">
-            <div className="noRewardPledgeDiv">
-              <div className="noRewardTitleDiv">
-                Pledge without a reward
-              </div>
-              <div className="noRewardInputDiv">
-                <input type="text"></input>
-              </div>
-              <div className="noRewardDescriptionDiv">
-                Back it because you believe in it. Support the project for no reward, just because it speaks to you.
-              </div>
-            </div>
-            <PledgeList
-              pledges={pledges} />
-          </div>
+      <div className="pledgeComponent AppComponentDiv">
+        <Title>
+          {listingTitle}
+        </Title>
+        <CreatorWrapper>
+          <Creator creator={creator} />
+        </CreatorWrapper>
+        <div className="supportWordDiv">
+          SUPPORT
         </div>
+        <div className="pledgesDiv">
+          <div className="noRewardPledgeDiv">
+            <div className="noRewardTitleDiv">
+              Pledge without a reward
+            </div>
+            <MoneyInput />
+            <div className="noRewardDescriptionDiv">
+              Back it because you believe in it. Support the project for no reward, just because it speaks to you.
+            </div>
+          </div>
+          <PledgeList
+            pledges={pledges} />
+        </div>
+      </div>
     );
   }
 };
