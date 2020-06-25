@@ -5,6 +5,6 @@ export default styled.div`
   font-family: Arial;
   border: solid rgb(200, 200, 200) 1px;
   padding: 10px;
-
+  position: relative;
 `;
 

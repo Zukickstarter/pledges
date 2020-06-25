@@ -59,9 +59,6 @@ class App extends React.Component {
     console.log('this.state: ', this.state);
     return (
       <div className="pledgeComponent AppComponentDiv">
-        <Title>
-          {listingTitle}
-        </Title>
         <CreatorWrapper>
           <Creator creator={creator} />
         </CreatorWrapper>

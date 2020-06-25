@@ -8,18 +8,26 @@
   max-width: 320px;
   border: 2px;
   font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
+  padding-top: 1%;
 }
 
 .pledgeComponent .creatorImageURLDiv {
   text-align: center;
 }
 
+.pledgeComponent .creatorNameDiv {
+  margin-top: 20%;
+}
+
 .pledgeComponent .creatorImage {
   border-radius: 50%;
+  position: absolute;
+  top: -50%;
+  left: 25%;
 }
 
 .pledgeComponent .supportWordDiv {
-  margin-top: 15px;
+  margin-top: 20px;
   padding-bottom: 20px;
   font-weight: 400;
   font-size: 1.1rem;
