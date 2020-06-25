@@ -15,13 +15,13 @@ class SinglePledge extends React.Component {
 
   showGreenOverlay(target) {
     const { selected, hovered } = this.state;
-    console.log('showGreenThing firing on target: ', target);
+    // console.log('showGreenThing firing on target: ', target);
     this.setState({ hovered: true });
   }
 
   hideGreenOverlay(target) {
     const { selected, hovered } = this.state;
-    console.log('hideGreenThing firing on target: ', target);
+    // console.log('hideGreenThing firing on target: ', target);
     this.setState({ hovered: false });
   }
 
@@ -35,9 +35,23 @@ class SinglePledge extends React.Component {
     this.hideGreenOverlay(event.target);
   }
 
+  renderGreenOverlay() {
+    const { hovered } = this.state;
+    if (hovered) {
+      return (
+        <div className="greenThing">
+          <div className="greenThingText">
+            select this reward
+          </div>
+        </div>
+      )
+    } else {
+      return null;
+    }
+  }
+
   renderView() {
     const { selected, hovered } = this.state;
-    console.log('hovered: ', hovered);
     console.log('selected: ', selected);
     if (selected) {
       return (
@@ -64,7 +78,7 @@ class SinglePledge extends React.Component {
   }
 
   render() {
-    const { selected } = this.state;
+    const { selected, hovered } = this.state;
     console.log('selected: ', selected);
     const { pledge } = this.props;
     const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
@@ -91,11 +105,7 @@ class SinglePledge extends React.Component {
           backers: {backers}
         </div>
         {/* {this.renderView()} */}
-        <div className="greenThing">
-          <div className="greenThingText">
-            select this reward
-          </div>
-        </div>
+        {this.renderGreenOverlay()}
       </div>
     );
   };
