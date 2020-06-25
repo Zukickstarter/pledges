@@ -5,6 +5,7 @@ import Title from './styled/Title.jsx';
 import CreatorWrapper from './styled/CreatorWrapper.jsx';
 import styled from 'styled-components';
 import './pledges-styles.css';
+import Creator from './Creator.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -61,22 +62,8 @@ class App extends React.Component {
             {listingTitle}
           </Title>
           <CreatorWrapper>
-            <div className="creatorImageURLDiv">
-              <img className="creatorImage" src={creator.imageURL} />
-            </div>
-            <div className="creatorNameDiv">
-              {creator.name}
-            </div>
-            <div className="creatorDescription">
-              {creator.description}
-            </div>
-            <div className="seeMoreLinkDiv">
-              See More
-            </div>
+            <Creator creator={creator} />
           </CreatorWrapper>
-          <div>
-            <br></br>
-          </div>
           <div className="supportWordDiv">
             SUPPORT
           </div>
