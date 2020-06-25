@@ -53,11 +53,30 @@
   margin-top: 15px;
   padding: 10px;
   border: solid rgb(200, 200, 200) 1px;
+  position: relative;
 }
 
-/* .pledgeComponent .SinglePledgeComponentDiv:hover {
-  background-color: green;
-} */
+.pledgeComponent .greenThing {
+  background-color: rgb(103, 161, 101);
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  opacity: 0.8;
+  height: 92%;
+  width: 93.5%;
+  padding: 10px;
+  text-align: center;
+  line-height: 92%;
+}
+
+.pledgeComponent .greenThingText {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
 
 /* applies style to all child components unless over-ridden */
 .pledgeComponent .SinglePledgeComponentDiv * {
@@ -74,5 +93,4 @@
   font-size: x-small;
   color: grey;
 }
-
 

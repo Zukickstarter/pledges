@@ -12,30 +12,47 @@ class SinglePledge extends React.Component {
     }
   }
 
-  clickHandler(event) {
-    const { selected } = this.state;
-    this.setState({ selected: !selected });
-    console.log('selected: ', selected);
-  }
+  // NEED TO FIGURE OUT HOW TO PREVENT DEFAULT
+  // clickHandler(event) {
+  //   const { selected } = this.state;
+  //   this.setState({ selected: !selected });
+
+  //   event.preventDefault();
+  // }
 
   renderView() {
+    const { selected } = this.state;
     if (selected) {
-      console.log('selected')
+      return (
+        <div className="pledgeDropDownDiv">
+          <div className="dropDownShippingDestDiv">
+            Shipping Destination:
+            <div>
+              <input
+                type="text"></input>
+            </div>
+          </div>
+          <div className="dropDownPledgeAmountDiv">
+            Pledge Amount
+          <MoneyInput />
+          </div>
+          <div className="dropDownContinueButton">
+            <button className="continueButton">Continue</button>
+          </div>
+        </div>
+      )
     } else {
-      console.log('not selected');
+      return null;
     }
   }
 
   render() {
     const { selected } = this.state;
+    console.log('selected: ', selected);
     const { pledge } = this.props;
     const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
     return (
-      <div
-        className="SinglePledgeComponentDiv"
-        onClick={(event) => {
-          this.clickHandler(event.target);
-        }} >
+      <div className="SinglePledgeComponentDiv">
         <div className="pledgePriceDiv">
           Pledge {price} or more
         </div>
@@ -49,24 +66,15 @@ class SinglePledge extends React.Component {
         <div className="pledgeBackersDiv">
           backers: {backers}
         </div>
-        <div className="pledgeDropDownDiv">
-          <div className="dropDownShippingDestDiv">
-            Shipping Destination:
-            <div>
-              <input type="text"></input>
-            </div>
-          </div>
-          <div className="dropDownPledgeAmountDiv">
-            Pledge Amount
-          <MoneyInput />
-          </div>
-          <div className="dropDownContinueButton">
-            <button className="continueButton">Continue</button>
+        {/* {this.renderView()} */}
+        <div className="greenThing">
+          <div className="greenThingText">
+            select this reward
           </div>
         </div>
       </div>
     );
-  }
+  };
 };
 
 export default SinglePledge;
