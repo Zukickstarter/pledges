@@ -8,20 +8,37 @@ class SinglePledge extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      selected: false
+      selected: false,
+      hovered: false
     }
   }
 
-  // NEED TO FIGURE OUT HOW TO PREVENT DEFAULT
-  // clickHandler(event) {
-  //   const { selected } = this.state;
-  //   this.setState({ selected: !selected });
+  showGreenOverlay(target) {
+    const { selected, hovered } = this.state;
+    console.log('showGreenThing firing on target: ', target);
+    this.setState({ hovered: true });
+  }
 
-  //   event.preventDefault();
-  // }
+  hideGreenOverlay(target) {
+    const { selected, hovered } = this.state;
+    console.log('hideGreenThing firing on target: ', target);
+    this.setState({ hovered: false });
+  }
+
+  handleMouseOver(event) {
+    // console.log('handleMouseOver firing with target: ', event.target);
+    this.showGreenOverlay(event.target);
+  }
+
+  handleMouseLeave(event) {
+    // console.log('handleMouseLeave firing with target: ', event.target);
+    this.hideGreenOverlay(event.target);
+  }
 
   renderView() {
-    const { selected } = this.state;
+    const { selected, hovered } = this.state;
+    console.log('hovered: ', hovered);
+    console.log('selected: ', selected);
     if (selected) {
       return (
         <div className="pledgeDropDownDiv">
@@ -52,7 +69,14 @@ class SinglePledge extends React.Component {
     const { pledge } = this.props;
     const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
     return (
-      <div className="SinglePledgeComponentDiv">
+      <div
+        className="SinglePledgeComponentDiv"
+        onMouseOver={(event) => {
+          this.handleMouseOver(event);
+        }}
+        onMouseLeave={(event) => {
+          this.handleMouseLeave(event);
+        }} >
         <div className="pledgePriceDiv">
           Pledge {price} or more
         </div>
