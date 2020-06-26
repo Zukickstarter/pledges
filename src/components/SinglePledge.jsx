@@ -71,7 +71,7 @@ class SinglePledge extends React.Component {
 
   /**
    * checks if this.state.selected is true
-   * if so, extends component to include a shipping destination text-input and a <MoneyInput /> component
+   * if so, extends the bottom of the component to include a shipping destination text-input and a <MoneyInput /> component
    */
   renderView() {
     const { selected, hovered } = this.state;
@@ -89,7 +89,11 @@ class SinglePledge extends React.Component {
           <MoneyInput />
           </div>
           <div className="dropDownContinueButton">
-            <button className="continueButton">Continue</button>
+            <button
+              className="continueButton"
+              onClick={() => {console.log('button clicked')}} >
+              Continue
+            </button>
           </div>
         </div>
       )

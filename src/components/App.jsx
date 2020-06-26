@@ -8,6 +8,7 @@ import Creator from './Creator.jsx';
 import MoneyInput from './MoneyInput.jsx';
 import './pledges-styles.css';
 import ReactCSSTransitionGroup from 'react-transition-group';
+// import CreatorModal from './CreatorModal.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,12 +31,6 @@ class App extends React.Component {
     }
     this.handleSeeMoreClick = this.handleSeeMoreClick.bind(this);
   };
-
-  handleSeeMoreClick() {
-    const { modalView } = this.state;
-    console.log('SEND IT TO THE MODAL');
-    this.setState({ modalView: true });
-  }
 
   calculateTotalBackers() {
     const { pledges, creator } = this.state;
@@ -63,8 +58,43 @@ class App extends React.Component {
       });
   };
 
+  /**
+   * handles clicking the "see more" text in the creator component
+   */
+  handleSeeMoreClick() {
+    const { modalView } = this.state;
+    console.log('SEND IT TO THE MODAL');
+    this.setState({ modalView: true });
+  }
+
+  /**
+   * toggles this.state.modalView
+   */
+  toggleModalView() {
+    console.log('toggleModalView() is firing')
+    const { modalView } = this.state;
+    this.setState({ modalView: !modalView });
+  }
+
+  /**
+   * checks if this.state.modalView is true.
+   * if so, renders modal to page
+   */
+  renderModal() {
+    const { modalView } = this.state;
+    if (modalView) {
+      return (
+        <div className="creatorModal">
+          WITNESS THE MODAL
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
-    const { id, listingTitle, pledges, creator, collaborators } = this.state;
+    const { id, listingTitle, pledges, creator, collaborators, modalView } = this.state;
     console.log('this.state: ', this.state);
     return (
       <div className="pledgeComponent AppComponentDiv">
@@ -94,6 +124,7 @@ class App extends React.Component {
           <PledgeList
             pledges={pledges} />
         </div>
+        {this.renderModal()}
       </div>
     );
   }
