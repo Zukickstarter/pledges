@@ -1,13 +1,23 @@
 import React from 'react';
-import { CreatorModalStyling } from './styled/CreatorModalStyles.jsx';
+import { CreatorModalStyling, AboutTheCreatorDiv } from './styled/CreatorModalStyles.jsx';
 
-const CreatorModal = (props) => {
-  const { creator } = props;
+/*
+name - big bold
+location - x-small
+description - paragraph normal size
+website - normal
+
+*/
+const CreatorModal = ({ creator, collaborators }) => {
+  console.log('creator: ', creator);
+  console.log('collaborators: ', collaborators);
+  const { totalBackers, imageURL, description, name, location, website } = creator;
   return (
     <CreatorModalStyling>
-      <div className="CreatorModalComponentDiv">
-        hey look i'm the creator info
-      </div>
+      <AboutTheCreatorDiv>
+        About the creator
+      </AboutTheCreatorDiv>
+
     </CreatorModalStyling>
   );
 };

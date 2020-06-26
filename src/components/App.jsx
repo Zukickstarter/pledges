@@ -85,14 +85,14 @@ class App extends React.Component {
    * if so, renders modal to page
    */
   renderModal() {
-    const { modalView, creator } = this.state;
+    const { modalView, creator, collaborators } = this.state;
     if (modalView) {
       return (
         <div>
           <WholePageWrapper onClick={() => {this.toggleModalView()}} >
           </WholePageWrapper>
           <ModalWrapper>
-            <CreatorModal />
+            <CreatorModal creator={creator} collaborators={collaborators} />
           </ModalWrapper>
         </div>
       );

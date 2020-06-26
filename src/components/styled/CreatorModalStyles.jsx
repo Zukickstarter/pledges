@@ -32,9 +32,11 @@ export const CreatorModalStyling = styled.div`
   z-index: 2;
   display: flex;
   flex-direction: column;
-  text-align: center;
   justify-content: space-between;
   width: 100%;
   height: 100%;
 `;
 
+export const AboutTheCreatorDiv = styled.div`
+  text-align: center;
+`;
