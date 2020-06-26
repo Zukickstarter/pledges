@@ -1,14 +1,17 @@
 import React from 'react';
 import axios from 'axios';
-import PledgeList from './PledgeList.jsx';
-import Title from './styled/Title.jsx';
-import CreatorWrapper from './styled/CreatorWrapper.jsx';
 import styled from 'styled-components';
+import ReactCSSTransitionGroup from 'react-transition-group';
+
+// react components
+import PledgeList from './PledgeList.jsx';
 import Creator from './Creator.jsx';
 import MoneyInput from './MoneyInput.jsx';
+
+// .css styled-component files
 import './pledges-styles.css';
-import ReactCSSTransitionGroup from 'react-transition-group';
-import ModalWrapper from './styled/ModalWrapper.jsx';
+import { CreatorWrapper } from './styled/CreatorWrapper.jsx';
+import { WholePageWrapper, ModalWrapper, CreatorModal } from './styled/CreatorModalStyles.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -81,14 +84,16 @@ class App extends React.Component {
    * if so, renders modal to page
    */
   renderModal() {
-    const { modalView } = this.state;
+    const { modalView, creator } = this.state;
     if (modalView) {
       return (
-        <ModalWrapper>
-          <div className="creatorModal">
-            WITNESS THE MODAL
-          </div>
-        </ModalWrapper>
+        <WholePageWrapper>
+          <ModalWrapper>
+            <CreatorModal>
+              About the creator
+            </CreatorModal>
+          </ModalWrapper>
+        </WholePageWrapper>
       );
     } else {
       return null;
@@ -133,3 +138,6 @@ class App extends React.Component {
 };
 
 export default App;
+
+
+

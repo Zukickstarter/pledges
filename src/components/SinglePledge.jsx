@@ -124,7 +124,7 @@ class SinglePledge extends React.Component {
         <div className="pledgeDescriptionDiv">
           {description}
         </div>
-        <EstDelivery estDelivery={estDelivery} />
+        <EstDelivery estDelivery={estDelivery} /> {/* lol */}
         <div className="pledgeBackersDiv">
           backers: {backers}
         </div>
@@ -136,3 +136,4 @@ class SinglePledge extends React.Component {
 };
 
 export default SinglePledge;
+

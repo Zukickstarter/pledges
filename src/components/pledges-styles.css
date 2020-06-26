@@ -33,7 +33,7 @@
 .pledgeComponent .creatorImage {
   border-radius: 50%;
   position: absolute;
-  top: -50%;
+  top: -33.3333333333%;
   left: 25%;
 }
 
@@ -54,14 +54,6 @@
   padding: 10px;
   border: solid rgb(200, 200, 200) 1px;
 }
-
-/* .pledgeComponent .noRewardTitleDiv {
-  margin-bottom: 5px;
-}
-
-.pledgeComponent .pledgePriceDiv {
-  padding: 10px;
-} */
 
 .pledgeComponent .pledgeTitleDiv {
   padding: 10px;
@@ -165,3 +157,5 @@
   opacity: 1;
   transition: opacity 300ms linear;
 } */
+
+
