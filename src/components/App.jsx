@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Creator from './Creator.jsx';
 import MoneyInput from './MoneyInput.jsx';
 import './pledges-styles.css';
+import ReactCSSTransitionGroup from 'react-transition-group';
 
 class App extends React.Component {
   constructor(props) {
@@ -31,7 +32,9 @@ class App extends React.Component {
   };
 
   handleSeeMoreClick() {
+    const { modalView } = this.state;
     console.log('SEND IT TO THE MODAL');
+    this.setState({ modalView: true });
   }
 
   calculateTotalBackers() {

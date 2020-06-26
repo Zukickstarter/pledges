@@ -146,3 +146,21 @@
   margin-right: 0px;
   margin-left: 0px;
 }
+
+.pledgeComponent .continueButton {
+  background-color: rgba(0,158,116,0.9);
+  color: white;
+  width: 100%;
+}
+
+
+/* animation */
+/*
+.fade-appear {
+  opacity: 0;
+}
+
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 300ms linear;
+} */

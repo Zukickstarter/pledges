@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MoneyInput from './MoneyInput.jsx';
 import EstDelivery from './EstDelivery.jsx';
-
+import ReactCSSTransitionGroup from 'react-transition-group';
 
 class SinglePledge extends React.Component {
   constructor(props) {
@@ -57,13 +57,12 @@ class SinglePledge extends React.Component {
     const { hovered, selected } = this.state;
     if (hovered && !selected) {
       return (
-        <div className="greenThing" onClick={() => {
-          this.setState({ hovered: false, selected: true });
-        }}>
-          <div className="greenThingText">
-            select this reward
+          <div className="greenThing" onClick={() => {
+            this.setState({ hovered: false, selected: true }); }}>
+            <div className="greenThingText">
+              select this reward
+            </div>
           </div>
-        </div>
       )
     } else {
       return null;
@@ -82,8 +81,7 @@ class SinglePledge extends React.Component {
           <div className="dropDownShippingDestDiv">
             Shipping Destination:
             <div>
-              <input
-                type="text"></input>
+              <input type="text"></input>
             </div>
           </div>
           <div className="dropDownPledgeAmountDiv">
