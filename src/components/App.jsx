@@ -87,7 +87,7 @@ class App extends React.Component {
     const { modalView, creator } = this.state;
     if (modalView) {
       return (
-        <WholePageWrapper>
+        <WholePageWrapper onClick={() => {this.toggleModalView()}} >
           <ModalWrapper>
             <CreatorModal>
               About the creator
@@ -105,7 +105,7 @@ class App extends React.Component {
     console.log('this.state: ', this.state);
     return (
       <div className="pledgeComponent AppComponentDiv">
-        <CreatorWrapper>
+        <CreatorWrapper onClick={() => {this.handleSeeMoreClick()}} >
           <Creator
             creator={creator}
             handleSeeMoreClick={this.handleSeeMoreClick} />
