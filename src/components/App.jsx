@@ -7,11 +7,12 @@ import ReactCSSTransitionGroup from 'react-transition-group';
 import PledgeList from './PledgeList.jsx';
 import Creator from './Creator.jsx';
 import MoneyInput from './MoneyInput.jsx';
+import CreatorModal from './CreatorModal.jsx';
 
 // .css styled-component files
 import './pledges-styles.css';
 import { CreatorWrapper } from './styled/CreatorWrapper.jsx';
-import { WholePageWrapper, ModalWrapper, CreatorModal } from './styled/CreatorModalStyles.jsx';
+import { WholePageWrapper, ModalWrapper, CreatorModalStyles } from './styled/CreatorModalStyles.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -87,13 +88,13 @@ class App extends React.Component {
     const { modalView, creator } = this.state;
     if (modalView) {
       return (
-        <WholePageWrapper onClick={() => {this.toggleModalView()}} >
+        <div>
+          <WholePageWrapper onClick={() => {this.toggleModalView()}} >
+          </WholePageWrapper>
           <ModalWrapper>
-            <CreatorModal>
-              About the creator
-            </CreatorModal>
+            <CreatorModal />
           </ModalWrapper>
-        </WholePageWrapper>
+        </div>
       );
     } else {
       return null;
