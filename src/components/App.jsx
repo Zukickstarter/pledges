@@ -8,7 +8,7 @@ import Creator from './Creator.jsx';
 import MoneyInput from './MoneyInput.jsx';
 import './pledges-styles.css';
 import ReactCSSTransitionGroup from 'react-transition-group';
-// import CreatorModal from './CreatorModal.jsx';
+import ModalWrapper from './styled/ModalWrapper.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -64,7 +64,7 @@ class App extends React.Component {
   handleSeeMoreClick() {
     const { modalView } = this.state;
     console.log('SEND IT TO THE MODAL');
-    this.setState({ modalView: true });
+    this.toggleModalView();
   }
 
   /**
@@ -84,9 +84,11 @@ class App extends React.Component {
     const { modalView } = this.state;
     if (modalView) {
       return (
-        <div className="creatorModal">
-          WITNESS THE MODAL
-        </div>
+        <ModalWrapper>
+          <div className="creatorModal">
+            WITNESS THE MODAL
+          </div>
+        </ModalWrapper>
       );
     } else {
       return null;
