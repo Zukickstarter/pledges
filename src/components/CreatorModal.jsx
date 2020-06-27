@@ -13,14 +13,7 @@ import {
 } from './styled/CreatorModalStyles.jsx';
 
 
-const createCollaboratorDiv = (col) => {
-  return <SingleCollaborator>DUDER</SingleCollaborator>;
-};
-
-
 const CreatorModal = ({ creator, collaborators }) => {
-  console.log('creator: ', creator);
-  console.log('collaborators: ', collaborators);
   const { totalBackers, imageURL, description, name, location, website } = creator;
   const avatarStyle = { borderRadius: "50%", width: "10%", height: "10%" };
   return (

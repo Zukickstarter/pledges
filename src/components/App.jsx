@@ -52,10 +52,8 @@ class App extends React.Component {
    */
   componentDidMount() {
     const { id, pledges, creator } = this.state;
-    console.log('component did mount');
     axios.get(`http://localhost:3003/api/pledges/${id}`)
       .then((response) => {
-        console.log('response.data: ', response.data);
         let { id, listingTitle, pledges, creator, collaborators } = response.data;
         this.setState({ id, listingTitle, pledges, creator, collaborators });
         this.calculateTotalBackers();
@@ -70,7 +68,6 @@ class App extends React.Component {
    */
   handleSeeMoreClick() {
     const { modalView } = this.state;
-    console.log('SEND IT TO THE MODAL');
     this.toggleModalView();
   }
 
@@ -78,7 +75,6 @@ class App extends React.Component {
    * toggles this.state.modalView
    */
   toggleModalView() {
-    console.log('toggleModalView() is firing')
     const { modalView } = this.state;
     this.setState({ modalView: !modalView });
   }
@@ -108,7 +104,6 @@ class App extends React.Component {
 
   render() {
     const { id, listingTitle, pledges, creator, collaborators, modalView } = this.state;
-    console.log('this.state: ', this.state);
     return (
       <div className="pledgeComponent AppComponentDiv">
         <CreatorWrapper onClick={() => {this.handleSeeMoreClick()}} >
