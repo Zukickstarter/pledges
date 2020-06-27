@@ -1,5 +1,7 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { bounce } from 'react-animations';
 
+const bounceAnimation = keyframes`${bounce}`;
 
 export const WholePageWrapper = styled.div`
   display: flex;
@@ -36,7 +38,12 @@ export const CreatorModalStyling = styled.div`
   overflow-y: scroll;
 `;
 
+export const BouncyDiv = styled.div`
+  animation: 1s ${bounceAnimation};
+`;
+
 export const AboutTheCreatorDiv = styled.div`
+  padding: 2%;
   text-align: center;
 `;
 

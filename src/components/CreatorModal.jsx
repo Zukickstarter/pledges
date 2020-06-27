@@ -9,31 +9,29 @@ import {
   BottomSectionDiv,
   WebsiteDiv,
   CollaboratorsDiv,
-  SingleCollaborator
+  SingleCollaborator,
+  BouncyDiv
 } from './styled/CreatorModalStyles.jsx';
 
 
 const CreatorModal = ({ creator, collaborators }) => {
   const { totalBackers, imageURL, description, name, location, website } = creator;
   const avatarStyle = { borderRadius: "50%", width: "10%", height: "10%" };
+  const nameAlign = { verticalAlign: "-50%" };
+  // const styles = {
+  //   animation:  'x 1s',
+  //   anmiationName: Radium.keyframes(bounce, 'bounce')
+  // };
   return (
     <CreatorModalStyling>
-      <AboutTheCreatorDiv>
+      <AboutTheCreatorDiv >
         About the creator
       </AboutTheCreatorDiv>
       <DataWrapper>
-        <NameDiv>
-          {name}
-        </NameDiv>
-        <LocationDiv>
-          {location}
-        </LocationDiv>
-        <DescriptionDiv>
-          {description.repeat(4)}
-        </DescriptionDiv>
-        <WebsiteDiv>
-          {website}
-        </WebsiteDiv>
+        <NameDiv>{ name }</NameDiv>
+        <LocationDiv>{ location }</LocationDiv>
+        <DescriptionDiv>{ description.repeat(4) }</DescriptionDiv>
+        <WebsiteDiv>{ website }</WebsiteDiv>
         <BottomSectionDiv>
           <CollaboratorsDiv>
             {collaborators.map((item, index) => {
@@ -41,7 +39,7 @@ const CreatorModal = ({ creator, collaborators }) => {
               return (
                 <SingleCollaborator key={index} >
                   <img src={imageURL} style={avatarStyle} />
-                  <div>{name}</div>
+                  <div style={nameAlign}>{name}</div>
                 </SingleCollaborator>
               );
             })}
