@@ -62,7 +62,7 @@
 .pledgeComponent .SinglePledgeComponentDiv {
   margin-right: 10px;
   margin-top: 15px;
-  padding: 10px;
+  /* padding: 10px; */
   border: solid rgb(200, 200, 200) 1px;
   position: relative;
 }

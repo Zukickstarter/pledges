@@ -25,6 +25,7 @@
     "express": "^4.17.1",
     "mysql2": "^2.1.0",
     "react": "^16.13.1",
+    "react-animations": "^1.0.0",
     "react-dom": "^16.13.1",
     "react-transition-group": "^4.4.1",
     "sequelize": "^5.21.13",

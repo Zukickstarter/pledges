@@ -13,6 +13,8 @@ import CreatorModal from './CreatorModal.jsx';
 import './pledges-styles.css';
 import { CreatorWrapper } from './styled/CreatorWrapper.jsx';
 import { WholePageWrapper, ModalWrapper, CreatorModalStyles } from './styled/CreatorModalStyles.jsx';
+import { FadeInDiv, FadeOutDiv, ZIndexOneDiv } from './styled/Animations.jsx';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -87,15 +89,17 @@ class App extends React.Component {
     const { modalView, creator, collaborators } = this.state;
     if (modalView) {
       return (
-        <div>
-          <WholePageWrapper onClick={() => {this.toggleModalView()}} >
-          </WholePageWrapper>
-          <ModalWrapper onClick={() => {this.toggleModalView()}} >
-            <CreatorModal
-              creator={creator}
-              collaborators={collaborators} />
-          </ModalWrapper>
-        </div>
+        <FadeInDiv>
+          {/* <FadeOutDiv> */}
+            <WholePageWrapper onClick={() => {this.toggleModalView()}} >
+            </WholePageWrapper>
+            <ModalWrapper onClick={() => {this.toggleModalView()}} >
+              <CreatorModal
+                creator={creator}
+                collaborators={collaborators} />
+            </ModalWrapper>
+          {/* </FadeOutDiv> */}
+        </FadeInDiv>
       );
     } else {
       return null;

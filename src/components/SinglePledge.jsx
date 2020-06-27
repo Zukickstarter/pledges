@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import MoneyInput from './MoneyInput.jsx';
 import EstDelivery from './EstDelivery.jsx';
 import ReactCSSTransitionGroup from 'react-transition-group';
+import { FadeInDiv, SlideInDownDiv } from './styled/Animations.jsx';
 
 class SinglePledge extends React.Component {
   constructor(props) {
@@ -57,17 +58,22 @@ class SinglePledge extends React.Component {
     const { hovered, selected } = this.state;
     if (hovered && !selected) {
       return (
-          <div className="greenThing" onClick={() => {
-            this.setState({ hovered: false, selected: true }); }}>
-            <div className="greenThingText">
-              select this reward
+          <FadeInDiv>
+            <div
+              className="greenThing"
+              onClick={() => {
+                this.setState({ hovered: false, selected: true });
+              }}>
+              <div className="greenThingText">
+                select this reward
+              </div>
             </div>
-          </div>
-      )
+          </FadeInDiv>
+      );
     } else {
-      return null;
+      return <div> </div>;
     }
-  }
+  };
 
   /**
    * checks if this.state.selected is true
@@ -77,26 +83,28 @@ class SinglePledge extends React.Component {
     const { selected, hovered } = this.state;
     if (selected) {
       return (
-        <div className="pledgeDropDownDiv">
-          <div className="dropDownShippingDestDiv">
-            Shipping Destination:
-            <div>
-              <input type="text"></input>
+        <SlideInDownDiv>
+          <div className="pledgeDropDownDiv">
+            <div className="dropDownShippingDestDiv">
+              Shipping Destination:
+              <div>
+                <input type="text"></input>
+              </div>
+            </div>
+            <div className="dropDownPledgeAmountDiv">
+              Pledge Amount
+            <MoneyInput />
+            </div>
+            <div className="dropDownContinueButton">
+              <button
+                className="continueButton"
+                onClick={() => {console.log('button clicked')}} >
+                Continue
+              </button>
             </div>
           </div>
-          <div className="dropDownPledgeAmountDiv">
-            Pledge Amount
-          <MoneyInput />
-          </div>
-          <div className="dropDownContinueButton">
-            <button
-              className="continueButton"
-              onClick={() => {console.log('button clicked')}} >
-              Continue
-            </button>
-          </div>
-        </div>
-      )
+        </SlideInDownDiv>
+      );
     } else {
       return null;
     }
