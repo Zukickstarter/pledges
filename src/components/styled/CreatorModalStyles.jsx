@@ -40,3 +40,20 @@ export const CreatorModalStyling = styled.div`
 export const AboutTheCreatorDiv = styled.div`
   text-align: center;
 `;
+
+export const NameDiv = styled.div`
+
+`;
+
+export const LocationDiv = styled.div`
+
+`;
+
+export const DescriptionDiv = styled.div`
+
+`;
+
+export const WebsiteDiv = styled.div`
+
+`;
+

@@ -1,5 +1,12 @@
 import React from 'react';
-import { CreatorModalStyling, AboutTheCreatorDiv } from './styled/CreatorModalStyles.jsx';
+import {
+  CreatorModalStyling,
+  AboutTheCreatorDiv,
+  NameDiv,
+  LocationDiv,
+  DescriptionDiv,
+  WebsiteDiv
+} from './styled/CreatorModalStyles.jsx';
 
 /*
 name - big bold
@@ -17,7 +24,10 @@ const CreatorModal = ({ creator, collaborators }) => {
       <AboutTheCreatorDiv>
         About the creator
       </AboutTheCreatorDiv>
-
+      <NameDiv>{name}</NameDiv>
+      <LocationDiv>{location}</LocationDiv>
+      <DescriptionDiv>{description}</DescriptionDiv>
+      <WebsiteDiv>{website}</WebsiteDiv>
     </CreatorModalStyling>
   );
 };
