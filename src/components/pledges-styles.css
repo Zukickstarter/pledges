@@ -1,5 +1,6 @@
 
 
+/**** if anyone chooses this project for SDC I sincerely apologize for how bad this css is  ****/
 
 .pledgeComponent.AppComponentDiv {
   overflow-y: scroll;
@@ -8,18 +9,36 @@
   max-width: 320px;
   border: 2px;
   font-family: "Maison Neue Book", "Helvetica Neue", Helvetica, Arial, "Liberation Sans", FreeSans, sans-serif;
+  padding-top: 1%;
 }
 
 .pledgeComponent .creatorImageURLDiv {
   text-align: center;
 }
 
+.pledgeComponent .creatorNameDiv {
+  font-size: large;
+  font-weight: bold;
+  padding: 2%;
+}
+
+.pledgeComponent .creatorDescription {
+  padding-top: 5%;
+}
+
+.pledgeComponent .creatorNameDiv {
+  margin-top: 20%;
+}
+
 .pledgeComponent .creatorImage {
   border-radius: 50%;
+  position: absolute;
+  top: -33.3333333333%;
+  left: 25%;
 }
 
 .pledgeComponent .supportWordDiv {
-  margin-top: 15px;
+  margin-top: 20px;
   padding-bottom: 20px;
   font-weight: 400;
   font-size: 1.1rem;
@@ -35,14 +54,6 @@
   padding: 10px;
   border: solid rgb(200, 200, 200) 1px;
 }
-
-/* .pledgeComponent .noRewardTitleDiv {
-  margin-bottom: 5px;
-}
-
-.pledgeComponent .pledgePriceDiv {
-  padding: 10px;
-} */
 
 .pledgeComponent .pledgeTitleDiv {
   padding: 10px;
@@ -128,3 +139,23 @@
   margin-right: 0px;
   margin-left: 0px;
 }
+
+.pledgeComponent .continueButton {
+  background-color: rgba(0,158,116,0.9);
+  color: white;
+  width: 100%;
+}
+
+
+/* animation */
+/*
+.fade-appear {
+  opacity: 0;
+}
+
+.fade-appear.fade-appear-active {
+  opacity: 1;
+  transition: opacity 300ms linear;
+} */
+
+

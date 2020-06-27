@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MoneyInput from './MoneyInput.jsx';
 import EstDelivery from './EstDelivery.jsx';
-
+import ReactCSSTransitionGroup from 'react-transition-group';
 
 class SinglePledge extends React.Component {
   constructor(props) {
@@ -57,13 +57,12 @@ class SinglePledge extends React.Component {
     const { hovered, selected } = this.state;
     if (hovered && !selected) {
       return (
-        <div className="greenThing" onClick={() => {
-          this.setState({ hovered: false, selected: true });
-        }}>
-          <div className="greenThingText">
-            select this reward
+          <div className="greenThing" onClick={() => {
+            this.setState({ hovered: false, selected: true }); }}>
+            <div className="greenThingText">
+              select this reward
+            </div>
           </div>
-        </div>
       )
     } else {
       return null;
@@ -72,7 +71,7 @@ class SinglePledge extends React.Component {
 
   /**
    * checks if this.state.selected is true
-   * if so, extends component to include a shipping destination text-input and a <MoneyInput /> component
+   * if so, extends the bottom of the component to include a shipping destination text-input and a <MoneyInput /> component
    */
   renderView() {
     const { selected, hovered } = this.state;
@@ -82,8 +81,7 @@ class SinglePledge extends React.Component {
           <div className="dropDownShippingDestDiv">
             Shipping Destination:
             <div>
-              <input
-                type="text"></input>
+              <input type="text"></input>
             </div>
           </div>
           <div className="dropDownPledgeAmountDiv">
@@ -91,7 +89,11 @@ class SinglePledge extends React.Component {
           <MoneyInput />
           </div>
           <div className="dropDownContinueButton">
-            <button className="continueButton">Continue</button>
+            <button
+              className="continueButton"
+              onClick={() => {console.log('button clicked')}} >
+              Continue
+            </button>
           </div>
         </div>
       )
@@ -122,7 +124,7 @@ class SinglePledge extends React.Component {
         <div className="pledgeDescriptionDiv">
           {description}
         </div>
-        <EstDelivery estDelivery={estDelivery} />
+        <EstDelivery estDelivery={estDelivery} /> {/* lol */}
         <div className="pledgeBackersDiv">
           backers: {backers}
         </div>
@@ -134,3 +136,4 @@ class SinglePledge extends React.Component {
 };
 
 export default SinglePledge;
+

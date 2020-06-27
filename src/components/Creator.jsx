@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Creator = (props) => {
-  const { creator } = props;
+  const { creator, handleSeeMoreClick } = props;
   return (
     <div className="CreatorComponentDiv">
       <div className="creatorImageURLDiv">
@@ -16,7 +16,7 @@ const Creator = (props) => {
       <div className="creatorDescription">
         {creator.description}
       </div>
-      <div className="seeMoreLinkDiv">
+      <div className="seeMoreLinkDiv" onClick={() => {handleSeeMoreClick()}}>
         See More
       </div>
     </div>

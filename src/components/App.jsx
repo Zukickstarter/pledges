@@ -1,12 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import PledgeList from './PledgeList.jsx';
-import Title from './styled/Title.jsx';
-import CreatorWrapper from './styled/CreatorWrapper.jsx';
 import styled from 'styled-components';
+import ReactCSSTransitionGroup from 'react-transition-group';
+
+// react component imports
+import PledgeList from './PledgeList.jsx';
 import Creator from './Creator.jsx';
 import MoneyInput from './MoneyInput.jsx';
+import CreatorModal from './CreatorModal.jsx';
+
+// .css and styled-component imports
 import './pledges-styles.css';
+import { CreatorWrapper } from './styled/CreatorWrapper.jsx';
+import { WholePageWrapper, ModalWrapper, CreatorModalStyles } from './styled/CreatorModalStyles.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,8 +30,10 @@ class App extends React.Component {
         location: '',
         website: ''
       },
-      collaborators: []
+      collaborators: [],
+      modalView: false
     }
+    this.handleSeeMoreClick = this.handleSeeMoreClick.bind(this);
   };
 
   calculateTotalBackers() {
@@ -39,12 +47,13 @@ class App extends React.Component {
     this.setState({ creator: creatorCopy });
   }
 
+  /**
+   * makes axios request and populates this.state with response data
+   */
   componentDidMount() {
     const { id, pledges, creator } = this.state;
-    console.log('component did mount');
     axios.get(`http://localhost:3003/api/pledges/${id}`)
       .then((response) => {
-        console.log('response.data: ', response.data);
         let { id, listingTitle, pledges, creator, collaborators } = response.data;
         this.setState({ id, listingTitle, pledges, creator, collaborators });
         this.calculateTotalBackers();
@@ -54,16 +63,53 @@ class App extends React.Component {
       });
   };
 
+  /**
+   * handles clicking the "see more" text in the creator component
+   */
+  handleSeeMoreClick() {
+    const { modalView } = this.state;
+    this.toggleModalView();
+  }
+
+  /**
+   * toggles this.state.modalView
+   */
+  toggleModalView() {
+    const { modalView } = this.state;
+    this.setState({ modalView: !modalView });
+  }
+
+  /**
+   * checks if this.state.modalView is true.
+   * if so, renders modal to page
+   */
+  renderModal() {
+    const { modalView, creator, collaborators } = this.state;
+    if (modalView) {
+      return (
+        <div>
+          <WholePageWrapper onClick={() => {this.toggleModalView()}} >
+          </WholePageWrapper>
+          <ModalWrapper onClick={() => {this.toggleModalView()}} >
+            <CreatorModal
+              creator={creator}
+              collaborators={collaborators} />
+          </ModalWrapper>
+        </div>
+      );
+    } else {
+      return null;
+    }
+  }
+
   render() {
-    const { id, listingTitle, pledges, creator, collaborators } = this.state;
-    console.log('this.state: ', this.state);
+    const { id, listingTitle, pledges, creator, collaborators, modalView } = this.state;
     return (
       <div className="pledgeComponent AppComponentDiv">
-        <Title>
-          {listingTitle}
-        </Title>
-        <CreatorWrapper>
-          <Creator creator={creator} />
+        <CreatorWrapper onClick={() => {this.handleSeeMoreClick()}} >
+          <Creator
+            creator={creator}
+            handleSeeMoreClick={this.handleSeeMoreClick} />
         </CreatorWrapper>
         <div className="supportWordDiv">
           SUPPORT
@@ -86,9 +132,13 @@ class App extends React.Component {
           <PledgeList
             pledges={pledges} />
         </div>
+        {this.renderModal()}
       </div>
     );
   }
 };
 
 export default App;
+
+
+
