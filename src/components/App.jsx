@@ -3,13 +3,13 @@ import axios from 'axios';
 import styled from 'styled-components';
 import ReactCSSTransitionGroup from 'react-transition-group';
 
-// react components
+// react component imports
 import PledgeList from './PledgeList.jsx';
 import Creator from './Creator.jsx';
 import MoneyInput from './MoneyInput.jsx';
 import CreatorModal from './CreatorModal.jsx';
 
-// .css styled-component files
+// .css and styled-component imports
 import './pledges-styles.css';
 import { CreatorWrapper } from './styled/CreatorWrapper.jsx';
 import { WholePageWrapper, ModalWrapper, CreatorModalStyles } from './styled/CreatorModalStyles.jsx';
@@ -47,6 +47,9 @@ class App extends React.Component {
     this.setState({ creator: creatorCopy });
   }
 
+  /**
+   * makes axios request and populates this.state with response data
+   */
   componentDidMount() {
     const { id, pledges, creator } = this.state;
     console.log('component did mount');
@@ -91,8 +94,10 @@ class App extends React.Component {
         <div>
           <WholePageWrapper onClick={() => {this.toggleModalView()}} >
           </WholePageWrapper>
-          <ModalWrapper>
-            <CreatorModal creator={creator} collaborators={collaborators} />
+          <ModalWrapper onClick={() => {this.toggleModalView()}} >
+            <CreatorModal
+              creator={creator}
+              collaborators={collaborators} />
           </ModalWrapper>
         </div>
       );

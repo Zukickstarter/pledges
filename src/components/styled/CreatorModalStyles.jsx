@@ -24,7 +24,6 @@ export const ModalWrapper = styled.div`
   width: 50%;
 `;
 
-
 export const CreatorModalStyling = styled.div`
   border: 1px solid grey;
   border-radius: 1%;
@@ -32,28 +31,53 @@ export const CreatorModalStyling = styled.div`
   z-index: 2;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 100%;
   height: 100%;
+  overflow-y: scroll;
 `;
 
 export const AboutTheCreatorDiv = styled.div`
   text-align: center;
 `;
 
-export const NameDiv = styled.div`
+export const DataWrapper = styled.div`
+  // border: 1px solid grey;
+  margin-top: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+`;
 
+export const NameDiv = styled.div`
+  font-size: 1.5em;
+  font-weight: bold;
 `;
 
 export const LocationDiv = styled.div`
-
+  font-size: small;
 `;
 
 export const DescriptionDiv = styled.div`
-
+  margin-top: 10%;
 `;
 
 export const WebsiteDiv = styled.div`
+  margin-top: 10%;
+`;
 
+export const BottomSectionDiv = styled.div`
+  padding-top; 10%
+  display: flex;
+  justify-content: space-evenly;
+`;
+
+export const CollaboratorsDiv = styled.div`
+  padding-top: 10%;
+`;
+
+export const SingleCollaborator = styled.div`
+  display: flex;
+  justify-content: left;
+  font-size: small;
+  padding: 1%;
 `;
 

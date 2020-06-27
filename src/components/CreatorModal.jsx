@@ -2,32 +2,59 @@ import React from 'react';
 import {
   CreatorModalStyling,
   AboutTheCreatorDiv,
+  DataWrapper,
   NameDiv,
   LocationDiv,
   DescriptionDiv,
-  WebsiteDiv
+  BottomSectionDiv,
+  WebsiteDiv,
+  CollaboratorsDiv,
+  SingleCollaborator
 } from './styled/CreatorModalStyles.jsx';
 
-/*
-name - big bold
-location - x-small
-description - paragraph normal size
-website - normal
 
-*/
+const createCollaboratorDiv = (col) => {
+  return <SingleCollaborator>DUDER</SingleCollaborator>;
+};
+
+
 const CreatorModal = ({ creator, collaborators }) => {
   console.log('creator: ', creator);
   console.log('collaborators: ', collaborators);
   const { totalBackers, imageURL, description, name, location, website } = creator;
+  const avatarStyle = { borderRadius: "50%", width: "10%", height: "10%" };
   return (
     <CreatorModalStyling>
       <AboutTheCreatorDiv>
         About the creator
       </AboutTheCreatorDiv>
-      <NameDiv>{name}</NameDiv>
-      <LocationDiv>{location}</LocationDiv>
-      <DescriptionDiv>{description}</DescriptionDiv>
-      <WebsiteDiv>{website}</WebsiteDiv>
+      <DataWrapper>
+        <NameDiv>
+          {name}
+        </NameDiv>
+        <LocationDiv>
+          {location}
+        </LocationDiv>
+        <DescriptionDiv>
+          {description.repeat(4)}
+        </DescriptionDiv>
+        <WebsiteDiv>
+          {website}
+        </WebsiteDiv>
+        <BottomSectionDiv>
+          <CollaboratorsDiv>
+            {collaborators.map((item, index) => {
+              let { name, imageURL } = item;
+              return (
+                <SingleCollaborator key={index} >
+                  <img src={imageURL} style={avatarStyle} />
+                  <div>{name}</div>
+                </SingleCollaborator>
+              );
+            })}
+          </CollaboratorsDiv>
+        </BottomSectionDiv>
+      </DataWrapper>
     </CreatorModalStyling>
   );
 };
