@@ -81,10 +81,16 @@ export const CollaboratorsDiv = styled.div`
   padding-top: 10%;
 `;
 
+export const CollaboratorsTitleDiv = styled.div`
+  font-size: large;
+  font-weight: bold;
+`;
+
 export const SingleCollaborator = styled.div`
   display: flex;
   justify-content: left;
   font-size: small;
   padding: 1%;
+  align-items: center;
 `;
 

@@ -12,8 +12,17 @@ import CreatorModal from './CreatorModal.jsx';
 // .css and styled-component imports
 import './pledges-styles.css';
 import { CreatorWrapper } from './styled/CreatorWrapper.jsx';
-import { WholePageWrapper, ModalWrapper, CreatorModalStyles } from './styled/CreatorModalStyles.jsx';
-import { FadeInDiv, FadeOutDiv, ZIndexOneDiv } from './styled/Animations.jsx';
+
+import {
+  FadeInDiv,
+  FadeOutDiv
+} from './styled/Animations.jsx';
+
+import {
+  WholePageWrapper,
+  ModalWrapper,
+  CreatorModalStyles
+} from './styled/CreatorModalStyles.jsx';
 
 
 class App extends React.Component {
@@ -38,6 +47,9 @@ class App extends React.Component {
     this.handleSeeMoreClick = this.handleSeeMoreClick.bind(this);
   };
 
+  /**
+   * adds the number of backers for each pledge and sets this.state.creator.totalBackers
+   */
   calculateTotalBackers() {
     const { pledges, creator } = this.state;
     let totalBackers = 0;
@@ -47,7 +59,7 @@ class App extends React.Component {
     let creatorCopy = {...creator};
     creatorCopy.totalBackers = 'First created - ' + totalBackers.toString() + ' backers';
     this.setState({ creator: creatorCopy });
-  }
+  };
 
   /**
    * makes axios request and populates this.state with response data
@@ -90,7 +102,6 @@ class App extends React.Component {
     if (modalView) {
       return (
         <FadeInDiv>
-          {/* <FadeOutDiv> */}
             <WholePageWrapper onClick={() => {this.toggleModalView()}} >
             </WholePageWrapper>
             <ModalWrapper onClick={() => {this.toggleModalView()}} >
@@ -98,7 +109,6 @@ class App extends React.Component {
                 creator={creator}
                 collaborators={collaborators} />
             </ModalWrapper>
-          {/* </FadeOutDiv> */}
         </FadeInDiv>
       );
     } else {

@@ -157,6 +157,7 @@ const seedListingAndPledges = () => {
 
       // create five collaborators associated with that listing
       let fiveCollaborators = createFiveCollaborators(dataValues.id);
+      console.log('fiveCollaborators in seed.js: ', fiveCollaborators);
       promiseArray.push(addFiveCollaborators(fiveCollaborators));
 
       return Promise.all(promiseArray);
@@ -180,5 +181,5 @@ const populate100Listings = () => {
 
 
 // // uncomment to allow for database seeding
-// populate100Listings();
+populate100Listings();
 

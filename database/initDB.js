@@ -8,4 +8,3 @@ initializeDatabase()
     console.log('error intitializing db: ', err);
   });
 
-
