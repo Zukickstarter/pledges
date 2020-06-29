@@ -83,7 +83,7 @@ class SinglePledge extends React.Component {
     const { selected, hovered } = this.state;
     if (selected) {
       return (
-        <SlideInDownDiv>
+        <FadeInDiv>
           <div className="pledgeDropDownDiv">
             <div className="dropDownShippingDestDiv">
               Shipping Destination:
@@ -103,7 +103,7 @@ class SinglePledge extends React.Component {
               </button>
             </div>
           </div>
-        </SlideInDownDiv>
+        </FadeInDiv>
       );
     } else {
       return null;
@@ -112,8 +112,8 @@ class SinglePledge extends React.Component {
 
   render() {
     const { selected, hovered } = this.state;
-    const { pledge } = this.props;
-    const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
+    const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = this.props.pledge;
+    // const { id, price, pledgeTitle, description, estDelivery, backers, listingId } = pledge;
     return (
       <div
         className="SinglePledgeComponentDiv"

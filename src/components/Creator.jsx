@@ -2,6 +2,7 @@ import React from 'react';
 
 const Creator = (props) => {
   const { creator, handleSeeMoreClick } = props;
+  const lightGreenText = { color: "#007460" };
   return (
     <div className="CreatorComponentDiv">
       <div className="creatorImageURLDiv">
@@ -16,8 +17,11 @@ const Creator = (props) => {
       <div className="creatorDescription">
         {creator.description}
       </div>
-      <div className="seeMoreLinkDiv" onClick={() => {handleSeeMoreClick()}}>
-        See More
+      <div
+        className="seeMoreLinkDiv"
+        onClick={() => {handleSeeMoreClick()}}
+        style={lightGreenText} >
+        See more
       </div>
     </div>
   );

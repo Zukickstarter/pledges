@@ -1,7 +1,8 @@
 const { Sequelize, DataTypes } = require('sequelize');
-// const { dbPassword } = require('../dbAuth.js');
+const { dbPassword } = require('../dbAuth.js');
+console.log('dbPassword: ', dbPassword);
 
-const sequelize = new Sequelize('pledgesDb', 'root', 'gimmie', {
+const sequelize = new Sequelize('pledgesDb', 'root', dbPassword, {
   host: 'localhost',
   dialect: 'mysql'
 });
@@ -291,5 +292,7 @@ module.exports = {
   getAllListings,
   getCreatorByListingId,
   getCollaboratorsByListingId,
-  getListingById
+  getListingById,
+  addCreator,
+  addFiveCollaborators
 };
