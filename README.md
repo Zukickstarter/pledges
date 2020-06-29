@@ -4,7 +4,7 @@
 
 ### Request
 
-    `GET api/pledges/:zukoId`
+    `GET api/pledges/:id`
 
 ### Response (JSON)
 
