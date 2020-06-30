@@ -66,7 +66,7 @@ class App extends React.Component {
    */
   componentDidMount() {
     const { id, pledges, creator } = this.state;
-    axios.get(`http://localhost:3003/api/pledges/${id}`)
+    axios.get(`/api/pledges/${id}`)
       .then((response) => {
         let { id, listingTitle, pledges, creator, collaborators } = response.data;
         this.setState({ id, listingTitle, pledges, creator, collaborators });

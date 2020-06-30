@@ -9,7 +9,7 @@
     "seed": "node ./database/seed.js",
     "test": "jest --detectOpenHandles ./__tests__",
     "start": "nodemon server/express.js --watch",
-    "build": "webpack -d --watch"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
