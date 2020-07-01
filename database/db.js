@@ -1,6 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
 const { dbPassword } = require('../dbAuth.js');
-console.log('dbPassword: ', dbPassword);
 
 const sequelize = new Sequelize('pledgesDb', 'root', dbPassword, {
   host: 'localhost',

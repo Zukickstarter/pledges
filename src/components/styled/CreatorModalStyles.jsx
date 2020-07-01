@@ -14,7 +14,6 @@ export const WholePageWrapper = styled.div`
   height: 100%;
   width: 100%;
   background-color: white;
-  z-index: 1;
 `;
 
 export const ModalWrapper = styled.div`
@@ -30,7 +29,6 @@ export const CreatorModalStyling = styled.div`
   border: 1px solid grey;
   border-radius: 1%;
   background-color: white;
-  z-index: 2;
   display: flex;
   flex-direction: column;
   width: 100%;

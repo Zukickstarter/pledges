@@ -20,7 +20,8 @@ const Creator = (props) => {
       <div
         className="seeMoreLinkDiv"
         onClick={() => {handleSeeMoreClick()}}
-        style={lightGreenText} >
+        // style={lightGreenText}
+        >
         See more
       </div>
     </div>
