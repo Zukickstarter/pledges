@@ -3,7 +3,7 @@ const ClosurePlugin = require('closure-webpack-plugin');
 
 module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.js'),
-  mode: 'production',
+  mode: 'development',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'

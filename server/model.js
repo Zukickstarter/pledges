@@ -26,7 +26,7 @@ const getPledgeData = (id) => {
       return result;
     })
     .catch((err) => {
-      console.log('error inside getPledgeData: ', err);
+     console.log('error inside getPledgeData: ', err);
       return err;
     });
 };
