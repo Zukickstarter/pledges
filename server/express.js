@@ -1,12 +1,16 @@
 const express = require('express');
 const { getPledgeData } = require('./model.js');
 
-
 const app = express();
 app.use(express.static('dist'));
 app.use(express.json());
 const port = 3003;
 
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 // app.get('/', (req, res) => res.send('Hello World!'));
 
@@ -15,6 +19,7 @@ const port = 3003;
  * endpoint that takes a id (of a listing in kickstarter) and returns the data associated with that id
  */
 app.get('/api/pledges/:id', (req, res) => {
+  console.log('api/pledges/:id @ express.js');
   let { id } = req.params;
   return getPledgeData(id)
     .then((response) => {
